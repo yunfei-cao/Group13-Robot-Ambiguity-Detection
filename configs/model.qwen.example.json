@@ -1,0 +1,9 @@
+{
+  "mode": "qwen",
+  "model": "",
+  "base_url": "",
+  "allow_real_requests": false,
+  "temperature": 0.0,
+  "max_tokens": 64,
+  "timeout_seconds": 30
+}

@@ -1,0 +1,9 @@
+# Local configuration and credentials
+configs/*.local.json
+.env
+.env.*
+
+# Python environments and bytecode
+.venv/
+__pycache__/
+*.pyc
