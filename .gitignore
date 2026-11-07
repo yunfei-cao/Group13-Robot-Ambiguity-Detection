@@ -7,3 +7,6 @@ configs/*.local.json
 .venv/
 __pycache__/
 *.pyc
+
+# Disposable offline experiments; dev/formal results remain deliverable
+/results/mock/
