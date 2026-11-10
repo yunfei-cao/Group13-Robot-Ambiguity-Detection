@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import csv
 from contextlib import contextmanager
 from copy import deepcopy
 from dataclasses import asdict
@@ -36,7 +37,19 @@ def digest(value) -> str:
 
 def load_samples(path: str | Path) -> list[dict]:
     if Path(path).suffix.lower() == ".csv":
-        raise ValueError("CSV column mapping is not agreed yet; provide normalized JSONL")
+        with Path(path).open(encoding="utf-8-sig", newline="") as stream:
+            reader = csv.DictReader(stream, strict=True)
+            fields = reader.fieldnames or []
+            required = {"sample_id", "pair_id", "environment", "instruction"}
+            if len(fields) != len(set(fields)) or set(fields) != required:
+                raise ValueError("CSV column mapping requires exactly sample_id,pair_id,environment,instruction")
+            rows = list(reader)
+        if any(None in r or any(v is None or not v.strip() for v in r.values()) for r in rows):
+            raise ValueError("Empty or malformed CSV cells")
+        samples = [dict(id=r["sample_id"], pair_id=r["pair_id"],
+                        environment=r["environment"], instruction=r["instruction"]) for r in rows]
+        validate_samples(samples)
+        return samples
     samples = [json.loads(line) for line in Path(path).read_text(encoding="utf-8-sig").splitlines()
                if line.strip()]
     validate_samples(samples)
@@ -159,14 +172,19 @@ def run_experiment(samples, *, results_root="results", run_id="mock-demo",
     if builder is None:
         if config.mode != "mock":
             raise ValueError("Real experiments require an explicit prompt builder")
-        builder = mock_prompt_builder
+        from .prompt_adapter import official_prompt_builder
+        builder = official_prompt_builder
     if config.mode != "mock" and builder is mock_prompt_builder:
         raise ValueError("Mock prompts cannot be used for real experiments")
+    from .prompt_adapter import official_prompt_builder
+    if builder is official_prompt_builder and prompt_version == "mock-v1":
+        from .prompts import PROMPT_VERSION
+        prompt_version = PROMPT_VERSION
     # Build independently and freeze every prompt before sending any request.
     jobs = []
     for sample in samples:
         for strategy in STRATEGIES:
-            prompt = deepcopy(builder(deepcopy(sample), strategy))
+            prompt = deepcopy(builder({k: deepcopy(sample[k]) for k in ("environment", "instruction") if k in sample}, strategy))
             jobs.append((digest([sample["id"], strategy]), sample["id"], strategy, prompt))
     sanitize = Sanitizer(config)
     settings = {"schema_version": 1, "run_id": run_id, "split": split,
@@ -267,7 +285,11 @@ def run_experiment(samples, *, results_root="results", run_id="mock-demo",
                             error={"code": "outcome_unknown", "retryable": False})
             prediction = dict(base, status=last["status"], label=last["label"],
                               is_valid=last["is_valid"], error=last.get("error"),
-                              attempts=number, retry_count=max(0, number - 1))
+                              attempts=number, retry_count=max(0, number - 1),
+                              raw_text=last.get("raw_text", ""),
+                              token_usage=last.get("token_usage", {}),
+                              model_id=last.get("model_id", config.model),
+                              latency_ms=last.get("latency_ms"))
             append(pp, prediction, sanitize)
             done.add(logical_id)
         final_rows = read_journal(pp)
@@ -280,7 +302,8 @@ def run_experiment(samples, *, results_root="results", run_id="mock-demo",
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--input", required=True, help="JSONL: id, instruction, optional label")
+    parser.add_argument("--input", required=True, help="CAI input CSV or normalized JSONL")
+    parser.add_argument("--limit", type=int, help="Run only the first N instructions")
     parser.add_argument("--run-id", default="mock-demo")
     parser.add_argument("--results-root", default="results")
     parser.add_argument("--split", choices=("mock", "dev", "formal"), default="mock")
@@ -294,11 +317,17 @@ def main():
         parser.error("Real API requires --real-api")
     if args.real_api and config.mode != "qwen":
         parser.error("--real-api requires a Qwen model configuration")
-    builder = None
+    from .prompt_adapter import official_prompt_builder
+    builder = official_prompt_builder
     if args.builder:
         module, name = args.builder.split(":", 1)
         builder = getattr(importlib.import_module(module), name)
-    print(json.dumps(run_experiment(load_samples(args.input), results_root=args.results_root,
+    samples = load_samples(args.input)
+    if args.limit is not None:
+        if args.limit <= 0:
+            parser.error("--limit must be positive")
+        samples = samples[:args.limit]
+    print(json.dumps(run_experiment(samples, results_root=args.results_root,
                      run_id=args.run_id, split=args.split, client=ModelClient(config),
                      builder=builder, prompt_version=args.prompt_version), ensure_ascii=False))
 

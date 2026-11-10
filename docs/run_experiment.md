@@ -3,44 +3,47 @@
 Run from the repository root (Python standard library only):
 
 ```powershell
-python -m src.run_experiment --input tests/fixtures/experiment_mock.jsonl --run-id mock-acceptance
+python -m src.run_experiment --input tests/fixtures/experiment_mock.jsonl --builder src.run_experiment:mock_prompt_builder --run-id mock-acceptance
 python -m unittest discover -s tests -v
 ```
 
-The default client and prompt builder are offline fixtures. All mock labels are
-configured fixture responses, not model judgments. Few-shot routing is exercised
-without inventing official examples. Repeating the same command resumes the run.
+The default client is offline Mock; the default builder now calls CAI's real
+`build_messages(strategy, environment, instruction, examples=None)` through
+`src.prompt_adapter.official_prompt_builder(sample, strategy)`. Use
+`--builder src.run_experiment:mock_prompt_builder` only for legacy routing fixtures.
+Mock labels are fixtures, not model judgments.
 
-## Data and prompt integration contract (provisional)
+## Data and prompt integration
 
-Input is UTF-8 JSONL, one object per instruction, with unique string `id`, nonempty
-string `instruction`, optional `label` (`CLEAR` or `NEEDS_CLARIFICATION`). Extra
-fields such as pair IDs and environment context are allowed and passed to the
-builder. The complete dataset, including extra fields and ordering, is hashed.
+CAI CSV must have exactly `sample_id,pair_id,environment,instruction` (any order).
+UTF-8 BOM, quoted commas and multiline values are supported. Empty cells,
+malformed records, extra columns, duplicate headers and duplicate IDs fail closed.
+`sample_id` maps to internal `id`; no ID is invented. JSONL remains supported.
+Only `environment` and `instruction` are passed to any builder. Labels, pair IDs,
+categories, source metadata and paired instructions cannot cross this boundary.
+The dataset hash still binds all supplied metadata for resume checks.
 
-`test_inputs.csv` is **not supported yet** and is rejected with mapping guidance.
-After CAI YU confirms the actual header and semantics, use Python `csv.DictReader`
-with UTF-8 BOM support and newline handling, and an explicit configurable mapping
-from the confirmed columns to `id`, `instruction`, optional `label` and context.
-Do not infer columns or invent IDs from row numbers. Preserve IDs as strings,
-validate missing/duplicate IDs and label mappings with the existing validator,
-and test quoted commas, multiline fields, BOM and empty cells. Until then,
-provide normalized JSONL through an agreed conversion outside the runner.
+The official adapter uses the fixed development examples, checks manifest version,
+example order and SHA-256 (normalizing checkout CRLF to LF), and calls CAI's
+function with structured system/user messages. Version is `v0.1-dev`, currently
+DRAFT; no prompt freeze or performance validation is implied. Three strategies:
+`zero_shot`, `few_shot`, `checklist`. Legacy instruction-only inputs require the
+explicit fixture builder above. No test labels are loaded by the runner.
 
-A `PromptBuilder` callable receives `(sample: dict, strategy: str)` and returns a
-prompt string or a ModelClient-compatible messages list. Strategy names are
-`zero_shot`, `few_shot`, `checklist`. Each call receives a fresh sample copy;
-each model call receives a fresh prompt copy. Builders must be deterministic,
-include only the current instruction/context and approved fixed examples, and
-never include previous predictions or reference labels. Prompt hashes and an
-explicit `prompt_version` bind the prompts to the run. Prompt text and input
-instructions are not copied into logs; retain the versioned source input and
-prompt implementation to reproduce a run.
+Six-request offline smoke run and repeat (second invocation makes zero calls):
 
-Confirm with CAI YU: source format/field names, stable instruction and pair IDs,
-context fields, label mapping and dataset splits; builder entry point, strategy
-names, messages/string return type, approved few-shot examples and exclusion
-from test data, checklist wording and immutable prompt version.
+```powershell
+python -m src.run_experiment --input data/processed/test_inputs.csv --limit 2 --run-id group13-integration-3bf202a
+```
+
+`src.evaluation_adapter.convert_predictions(predictions_path, labels_path)` joins
+labels after inference and returns a dictionary of three separate strategy lists
+for WANG's `score_samples` / `calculate_metrics`. It maps `raw_text` to
+`raw_response`, success/invalid_output to SUCCESS, error/interrupted to
+REQUEST_FAILED. Each list must have complete pairs, unique IDs and equal strategy
+coverage. A subset of complete pairs is permitted. Do not combine strategies into
+one call (WANG requires unique sample IDs). Legacy predictions without raw_text
+are rejected with migration guidance. Gold labels remain outside model inputs.
 
 ## Outputs and recovery
 

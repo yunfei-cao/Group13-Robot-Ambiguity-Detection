@@ -11,7 +11,7 @@ from unittest.mock import Mock, patch
 
 from src.model_client import ModelClient, ModelConfig, ModelError, ModelClientError
 from src.run_experiment import (STRATEGIES, load_samples, read_journal, run_experiment,
-                                run_lock)
+                                run_lock, mock_prompt_builder)
 
 SAMPLES = [{"id": "mock-1", "instruction": "Move the test cube."},
            {"id": "mock-2", "instruction": "Move that one."}]
@@ -30,7 +30,7 @@ class RunnerTests(unittest.TestCase):
         self.addCleanup(guard.stop)
 
     def run_job(self, samples=None, **kw):
-        options = dict(results_root=self.root, client=self.client, sleep=self.wait)
+        options = dict(results_root=self.root, client=self.client, sleep=self.wait, builder=mock_prompt_builder)
         options.update(kw)
         return run_experiment(SAMPLES if samples is None else samples, **options)
 
