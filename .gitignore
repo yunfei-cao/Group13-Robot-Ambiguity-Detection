@@ -10,3 +10,18 @@ __pycache__/
 
 # Disposable offline experiments; dev/formal results remain deliverable
 /results/mock/
+
+# Local report dependencies, render QA and duplicate delivery archives
+/results/reports/_dependencies/
+/results/reports/_qa/
+/results/reports/Group13_Report_Package.zip
+/results/upload_audit/
+~$*.docx
+
+# Regenerable duplicates; the 16 main report SVG figures remain versioned
+/results/reports/figures/*.png
+/results/reports/figures/confusion_*.svg
+/results/reports/data/completed_attempts.csv
+/results/reports/data/scored_predictions.csv
+/results/analysis/group13-dev-acceptance-20261111-verified/*.png
+/results/analysis/group13-dev-acceptance-20261111-verified/*.svg

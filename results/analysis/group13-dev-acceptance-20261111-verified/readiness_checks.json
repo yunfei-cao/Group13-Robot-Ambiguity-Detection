@@ -1,0 +1,44 @@
+{
+  "test_instructions": 200,
+  "complete_test_pairs": 100,
+  "test_gold_counts": {
+    "CLEAR": 100,
+    "NEEDS_CLARIFICATION": 100
+  },
+  "strategies": [
+    "zero_shot",
+    "few_shot",
+    "checklist"
+  ],
+  "logical_requests": 600,
+  "all_manifest_byte_hashes_match": false,
+  "all_manifest_content_hashes_match_after_lf_normalization": true,
+  "manifest_hash_note": "CRLF vs LF only; originals unchanged; preparation pins actual byte hashes.",
+  "prompt_templates_match_runtime": true,
+  "fixed_examples_match_dev_sources": true,
+  "dev_test_sample_and_pair_overlap": 0,
+  "test_instruction_overlap_with_original_dev": 0,
+  "pilot_example_pair_overlap": 0,
+  "all_600_messages_pass_input_whitelist": true,
+  "prompt_manifest_status": "DRAFT: development pilot pending",
+  "prompt_version": "v0.1-dev",
+  "thinking": false,
+  "stream": false,
+  "model": "qwen-plus-2025-12-01",
+  "temperature": 0,
+  "max_tokens": 64,
+  "data_semantic_review": "PENDING: automatic checks do not establish label validity",
+  "offline_tests": {
+    "run": 70,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "successful": true
+  },
+  "technical_interfaces_pass": true,
+  "formal_launch_ready": false,
+  "blockers": [
+    "Prompt manifest is DRAFT; owner review and explicit freeze required."
+  ],
+  "dev_acceptance": "59/60 valid; one unresolved request retained; not complete classification coverage"
+}

@@ -1,0 +1,21 @@
+{
+  "run_id": "group13-full-pilot-qwen200-20261111T090248Z-76877106",
+  "manifest_sha256": "ed0334fddcb0f652441f744af80aef10632ffe13a8bf477f1f2df76f80816ec5",
+  "run_config_sha256": "d2d9dc6a1b1e51762cb9e16f95b954ab62382d4806b109e5ba3f0fa06fcda831",
+  "reviewed_completions": 45,
+  "authorization": "User requested explicit recovery of reviewed historical consecutive failures only; retain all safeguards and 300000 token limit.",
+  "journal_prefixes": {
+    "attempts.jsonl": {
+      "bytes": 50298,
+      "sha256": "a68ff4b1ea7e731f2b53bd0d8a1df88079e77be821809ffa4da58b19cc818318"
+    },
+    "predictions.jsonl": {
+      "bytes": 19233,
+      "sha256": "0384185f3c01b3b8d09f0afdbc4f1cdd9662e9bf6082225dd7d0442f38afd81e"
+    },
+    "execution_summaries.jsonl": {
+      "bytes": 1235,
+      "sha256": "71eabe41dbe6516f14355f75991c46b3e696107417bbb42f9ee8e70919cfd056"
+    }
+  }
+}

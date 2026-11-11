@@ -1,0 +1,18 @@
+# Preserve immutable experiment evidence and its byte-level SHA-256 seals.
+/results/pilot/** -text
+/results/dev/** -text
+/results/formal/** -text
+/results/analysis/** -text
+/results/reports/** -text
+/scripts/full_pilot.py -text
+/scripts/pilot_round2.py -text
+
+# Historical Pilot manifests pin the working-tree bytes of these source inputs.
+# Keep their original checkout endings without changing collaborator content.
+/src/run_experiment.py text eol=crlf
+/src/prompts.py text eol=crlf
+/src/prompt_adapter.py text eol=crlf
+/src/model_client.py text eol=lf
+/data/processed/test_inputs.csv text eol=crlf
+/prompts/*.txt text eol=crlf
+/prompts/*.json text eol=crlf

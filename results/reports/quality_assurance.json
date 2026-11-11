@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "word_pdf_pages": 15,
+  "embedded_figures": 16,
+  "editable_tables": 14,
+  "png_count": 22,
+  "svg_count": 22,
+  "png_dpi": 350,
+  "protected_files_unchanged": 95,
+  "visual_review": "All 15 final page PNGs inspected; no visible clipping, overlap, missing glyphs or missing images.",
+  "pdf_fonts": [
+    "BCDEEE+TimesNewRomanPSMT",
+    "BCDFEE+TimesNewRomanPSMT",
+    "BCDGEE+TimesNewRomanPS-ItalicMT",
+    "BCDHEE+TimesNewRomanPS-BoldMT",
+    "BCDIEE+TimesNewRomanPS-BoldMT"
+  ],
+  "canonical_renderer": "Unavailable because LibreOffice is absent; Microsoft Word native PDF export succeeded.",
+  "final_generation_failures": [],
+  "api_calls": 0
+}

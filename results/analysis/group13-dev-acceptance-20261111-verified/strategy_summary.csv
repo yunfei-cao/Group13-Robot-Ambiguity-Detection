@@ -1,0 +1,4 @@
+﻿strategy,logical_requests,valid_predictions,coverage,started_intents,completed_attempts,accuracy_valid,macro_f1_valid,accuracy_all,macro_f1_all,prompt_tokens,completion_tokens,total_tokens,known_attempt_latency_seconds,successful_attempt_latency_mean_seconds
+zero_shot,20,19,0.95,22,21,0.5263157894736842,0.5043478260869565,0.5,0.4916666666666667,6002,89,6091,78.43503840011545,1.8837618947421249
+few_shot,20,20,1.0,20,20,0.55,0.48717948717948717,0.55,0.48717948717948717,12403,105,12508,47.08517830009805,2.3542589150049027
+checklist,20,20,1.0,20,20,0.55,0.52,0.55,0.52,8863,95,8958,39.55529580032453,1.9777647900162265

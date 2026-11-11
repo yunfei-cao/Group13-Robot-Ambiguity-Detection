@@ -1,0 +1,156 @@
+[
+  {
+    "name": "01_accuracy",
+    "title": "Round 1 vs Round 2 Accuracy Comparison",
+    "main": true,
+    "png": "figures/01_accuracy.png",
+    "svg": "figures/01_accuracy.svg"
+  },
+  {
+    "name": "02_macro_f1",
+    "title": "Round 1 vs Round 2 Macro F1 Comparison",
+    "main": true,
+    "png": "figures/02_macro_f1.png",
+    "svg": "figures/02_macro_f1.svg"
+  },
+  {
+    "name": "03_accuracy_macro_f1_grouped",
+    "title": "Accuracy and Macro F1 Grouped Comparison",
+    "main": true,
+    "png": "figures/03_accuracy_macro_f1_grouped.png",
+    "svg": "figures/03_accuracy_macro_f1_grouped.svg"
+  },
+  {
+    "name": "confusion_r1_zero_shot",
+    "title": "R1 Zero-shot Confusion Matrix",
+    "main": false,
+    "png": "figures/confusion_r1_zero_shot.png",
+    "svg": "figures/confusion_r1_zero_shot.svg"
+  },
+  {
+    "name": "confusion_r1_few_shot",
+    "title": "R1 Few-shot Confusion Matrix",
+    "main": false,
+    "png": "figures/confusion_r1_few_shot.png",
+    "svg": "figures/confusion_r1_few_shot.svg"
+  },
+  {
+    "name": "confusion_r1_checklist",
+    "title": "R1 Checklist Confusion Matrix",
+    "main": false,
+    "png": "figures/confusion_r1_checklist.png",
+    "svg": "figures/confusion_r1_checklist.svg"
+  },
+  {
+    "name": "confusion_r2_zero_shot",
+    "title": "R2 Zero-shot Confusion Matrix",
+    "main": false,
+    "png": "figures/confusion_r2_zero_shot.png",
+    "svg": "figures/confusion_r2_zero_shot.svg"
+  },
+  {
+    "name": "confusion_r2_few_shot",
+    "title": "R2 Few-shot Confusion Matrix",
+    "main": false,
+    "png": "figures/confusion_r2_few_shot.png",
+    "svg": "figures/confusion_r2_few_shot.svg"
+  },
+  {
+    "name": "confusion_r2_checklist",
+    "title": "R2 Checklist Confusion Matrix",
+    "main": false,
+    "png": "figures/confusion_r2_checklist.png",
+    "svg": "figures/confusion_r2_checklist.svg"
+  },
+  {
+    "name": "04_confusion_matrices",
+    "title": "Confusion Matrices for All Strategies and Rounds",
+    "main": true,
+    "png": "figures/04_confusion_matrices.png",
+    "svg": "figures/04_confusion_matrices.svg"
+  },
+  {
+    "name": "05_prediction_distribution",
+    "title": "Prediction Label Distribution Among Valid Outputs",
+    "main": true,
+    "png": "figures/05_prediction_distribution.png",
+    "svg": "figures/05_prediction_distribution.svg"
+  },
+  {
+    "name": "06_class_recall",
+    "title": "Recall for Each Gold Class",
+    "main": true,
+    "png": "figures/06_class_recall.png",
+    "svg": "figures/06_class_recall.svg"
+  },
+  {
+    "name": "07_false_positives_false_negatives",
+    "title": "False Positives and False Negatives",
+    "main": true,
+    "png": "figures/07_false_positives_false_negatives.png",
+    "svg": "figures/07_false_positives_false_negatives.svg"
+  },
+  {
+    "name": "08_prediction_agreement",
+    "title": "Cross Round Prediction Agreement",
+    "main": true,
+    "png": "figures/08_prediction_agreement.png",
+    "svg": "figures/08_prediction_agreement.svg"
+  },
+  {
+    "name": "09_label_flips",
+    "title": "Label Flips and Validity Changes",
+    "main": true,
+    "png": "figures/09_label_flips.png",
+    "svg": "figures/09_label_flips.svg"
+  },
+  {
+    "name": "10_agreement_composition",
+    "title": "Agreement Composition Across All Logical Jobs",
+    "main": true,
+    "png": "figures/10_agreement_composition.png",
+    "svg": "figures/10_agreement_composition.svg"
+  },
+  {
+    "name": "11_correctness_transitions",
+    "title": "Correctness Transitions Between Rounds",
+    "main": true,
+    "png": "figures/11_correctness_transitions.png",
+    "svg": "figures/11_correctness_transitions.svg"
+  },
+  {
+    "name": "12_prompt_tokens",
+    "title": "Input Token Consumption",
+    "main": true,
+    "png": "figures/12_prompt_tokens.png",
+    "svg": "figures/12_prompt_tokens.svg"
+  },
+  {
+    "name": "13_completion_tokens",
+    "title": "Output Token Consumption",
+    "main": true,
+    "png": "figures/13_completion_tokens.png",
+    "svg": "figures/13_completion_tokens.svg"
+  },
+  {
+    "name": "14_total_tokens",
+    "title": "Total Known Token Consumption",
+    "main": true,
+    "png": "figures/14_total_tokens.png",
+    "svg": "figures/14_total_tokens.svg"
+  },
+  {
+    "name": "15_latency",
+    "title": "Mean and P95 Attempt Latency",
+    "main": true,
+    "png": "figures/15_latency.png",
+    "svg": "figures/15_latency.svg"
+  },
+  {
+    "name": "16_call_reliability",
+    "title": "Request Success Rates and Retry Overhead",
+    "main": true,
+    "png": "figures/16_call_reliability.png",
+    "svg": "figures/16_call_reliability.svg"
+  }
+]

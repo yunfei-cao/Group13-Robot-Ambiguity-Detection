@@ -1,0 +1,20 @@
+{
+  "branch": "feature/model-experiment",
+  "preexisting_work_preserved": true,
+  "existing_changed_files": [
+    "src\\run_experiment.py"
+  ],
+  "all_existing_data_prompts_evaluation_and_results_unchanged": true,
+  "offline_tests": {
+    "command": "python -B -m unittest discover -s tests -v",
+    "passed": 78,
+    "failures": 0,
+    "errors": 0
+  },
+  "powershell_syntax_check": "passed",
+  "powershell_checkonly": "passed",
+  "real_api_calls": 0,
+  "pilot_result_journals_created": false,
+  "prompt_manifest_still_draft": true,
+  "known_existing_changes": "src/run_experiment.py and tests/test_dev_safety.py already had uncommitted work before this task; preserved"
+}

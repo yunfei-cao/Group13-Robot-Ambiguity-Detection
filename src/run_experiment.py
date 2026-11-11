@@ -153,16 +153,62 @@ def append(path, row, sanitize):
         os.fsync(stream.fileno())
 
 
+def safety_stop(completions, total_token_stop=300000):
+    """Conservative development-run circuit breaker; inspect persisted outcomes."""
+    consecutive = rate_limits = total_tokens = 0
+    for row in completions:
+        error = row.get("error") or {}
+        if error.get("http_status") in (401, 403) or error.get("code") in {
+                "authentication_error", "permission_denied"}:
+            return "authentication_or_permission_error"
+        if error.get("http_status") == 429 or error.get("code") == "rate_limit":
+            rate_limits += 1
+        consecutive = consecutive + 1 if row.get("status") != "success" else 0
+        usage = row.get("token_usage") or {}
+        prompt, completion, total = (usage.get(k) for k in
+                                    ("prompt_tokens", "completion_tokens", "total_tokens"))
+        if row.get("status") in {"success", "invalid_output"} and any(
+                type(v) is not int or v < 0 for v in (prompt, completion, total)):
+            return "missing_or_invalid_token_usage"
+        if any(type(v) is int and v > limit for v, limit in
+               ((prompt, 16000), (completion, 64), (total, 16064))):
+            return "abnormal_token_usage"
+        if type(total) is int:
+            total_tokens += total
+        if total_tokens >= total_token_stop:
+            return "token_budget_reached"
+        if rate_limits >= 3:
+            return "three_rate_limit_errors"
+        if consecutive >= 3:
+            return "three_consecutive_unsuccessful_attempts"
+    return None
+
+
 def run_experiment(samples, *, results_root="results", run_id="mock-demo",
                    split="mock", client=None, builder=None, prompt_version="mock-v1",
-                   sleep=time.sleep):
+                   sleep=time.sleep, stop_on_anomaly=False, max_logical_requests=None,
+                   allow_draft_pilot=False, snapshot_sha256=None,
+                   total_token_stop=300000, extend_token_budget=False):
     validate_samples(samples)
     client = client or ModelClient()
     config = client.config
-    if split not in {"mock", "dev", "formal"}:
-        raise ValueError("split must be mock, dev or formal")
+    if max_logical_requests is not None and len(samples) * len(STRATEGIES) > max_logical_requests:
+        raise ValueError("Logical request limit exceeded before dispatch")
+    if split not in {"mock", "dev", "formal", "pilot"}:
+        raise ValueError("split must be mock, dev, formal or pilot")
     if (config.mode == "mock") != (split == "mock"):
         raise ValueError("Mock and real experiment outputs must be separated")
+    if type(total_token_stop) is not int or total_token_stop <= 0:
+        raise ValueError("Token stop must be a positive integer")
+    if split == "pilot":
+        if not allow_draft_pilot or not stop_on_anomaly or not re.fullmatch(r"[a-f0-9]{64}", snapshot_sha256 or ""):
+            raise ValueError("Pilot requires explicit draft authorization, snapshot hash and anomaly stops")
+    elif allow_draft_pilot or snapshot_sha256 is not None or extend_token_budget or total_token_stop != 300000:
+        raise ValueError("Pilot options cannot bypass dev/formal policies")
+    if split == "formal":
+        manifest = json.loads((Path(__file__).resolve().parents[1] / "prompts/prompt_manifest.json").read_text(encoding="utf-8"))
+        if not re.match(r"^(FROZEN|APPROVED|FINAL)(:|$)", manifest.get("status", "")):
+            raise ValueError("Formal experiments require reviewed frozen prompts; use explicitly authorized pilot mode for DRAFT")
     if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]*", run_id):
         raise ValueError("run_id must be a safe directory name")
     if not prompt_version.strip():
@@ -195,16 +241,38 @@ def run_experiment(samples, *, results_root="results", run_id="mock-demo",
                 "prompt_version": prompt_version, "dataset_sha256": digest(samples),
                 "strategies": list(STRATEGIES), "logical_requests": len(jobs),
                 "prompts_sha256": digest([j[3] for j in jobs]), "retry_delays_seconds": [2, 4]}
+    if stop_on_anomaly:
+        settings["safety_policy"] = dict(max_prompt_tokens_per_attempt=16000,
+            max_completion_tokens_per_attempt=64, total_token_stop=total_token_stop,
+            consecutive_unsuccessful_attempts=3, rate_limit_errors=3,
+            stop_on_missing_usage=True)
+    if max_logical_requests is not None:
+        settings["max_logical_requests"] = max_logical_requests
+    if split == "pilot":
+        settings.update(experiment_kind="full_pilot_not_final", allow_draft_pilot=True,
+                        snapshot_sha256=snapshot_sha256)
     settings = sanitize(settings)
     folder = Path(results_root) / split / run_id
     folder.mkdir(parents=True, exist_ok=True)
     with run_lock(folder):
         config_path = folder / "run_config.json"
+        budget_change = None
         if config_path.exists():
             old = json.loads(config_path.read_text(encoding="utf-8"))
             if {k: v for k, v in old.items() if k != "created_at"} != settings:
-                raise ValueError("Run configuration changed; use a new run_id")
+                comparable = deepcopy(old)
+                previous_budget = comparable.get("safety_policy", {}).get("total_token_stop")
+                if split == "pilot" and extend_token_budget and type(previous_budget) is int and total_token_stop > previous_budget:
+                    comparable["safety_policy"]["total_token_stop"] = total_token_stop
+                if {k: v for k, v in comparable.items() if k != "created_at"} != settings:
+                    raise ValueError("Run configuration changed; use a new run_id (budget-only pilot extension requires explicit opt-in)")
+                budget_change = dict(event="token_budget_extended", old_limit=previous_budget,
+                    new_limit=total_token_stop, timestamp=datetime.now(timezone.utc).isoformat())
+            elif extend_token_budget:
+                raise ValueError("Budget extension must strictly increase the existing pilot limit")
         else:
+            if extend_token_budget:
+                raise ValueError("Budget extension requires an existing pilot run")
             if any((folder / name).exists() for name in ("attempts.jsonl", "predictions.jsonl")):
                 raise ValueError("Journals without run configuration cannot be resumed")
             temporary = folder / "run_config.tmp"
@@ -239,8 +307,22 @@ def run_experiment(samples, *, results_root="results", run_id="mock-demo",
         done = {row["logical_id"] for row in predictions}
         if len(done) != len(predictions):
             raise ValueError("Duplicate predictions detected")
+        if budget_change:
+            # Audit before atomic replacement; a crash may leave an uncommitted
+            # audit intent, but can never silently increase the active limit.
+            append(folder / "budget_events.jsonl", dict(budget_change, run_id=run_id), sanitize)
+            temporary = folder / "run_config.tmp"
+            with temporary.open("w", encoding="utf-8") as stream:
+                json.dump(dict(settings, created_at=old["created_at"]), stream, indent=2)
+                stream.flush()
+                os.fsync(stream.fileno())
+            os.replace(temporary, config_path)
         actual_calls = 0
+        completions = [r for r in attempts if r.get("event") == "completed"]
+        stopped_reason = safety_stop(completions, total_token_stop) if stop_on_anomaly else None
         for logical_id, sid, strategy, prompt in jobs:
+            if stopped_reason:
+                break
             if logical_id in done:
                 continue
             base = dict(logical_id=logical_id, sample_id=sid, strategy=strategy,
@@ -280,6 +362,11 @@ def run_experiment(samples, *, results_root="results", run_id="mock-demo",
                 last = dict(base, **result, event="completed", attempt_number=number,
                             retry_count=number - 1, timestamp=datetime.now(timezone.utc).isoformat())
                 append(ap, last, sanitize)
+                completions.append(last)
+                if stop_on_anomaly:
+                    stopped_reason = safety_stop(completions, total_token_stop)
+                    if stopped_reason:
+                        break
             if last is None:
                 last = dict(status="interrupted", label=None, is_valid=False, token_usage={},
                             error={"code": "outcome_unknown", "retryable": False})
@@ -294,19 +381,34 @@ def run_experiment(samples, *, results_root="results", run_id="mock-demo",
             done.add(logical_id)
         final_rows = read_journal(pp)
         unresolved = [r["logical_id"] for r in final_rows if not r["is_valid"]]
-        return {"output_dir": str(folder), "logical_requests": len(jobs),
+        summary = {"output_dir": str(folder), "logical_requests": len(jobs),
                 "final_predictions": len(done), "calls_this_run": actual_calls,
                 "valid_predictions": len(final_rows) - len(unresolved),
                 "unresolved_logical_ids": unresolved}
+        if stop_on_anomaly:
+            summary.update(stopped_reason=stopped_reason, remaining_logical_requests=len(jobs)-len(done))
+            summary.update(known_token_usage={key: sum((r.get("token_usage") or {}).get(key) or 0 for r in completions)
+                for key in ("prompt_tokens", "completion_tokens", "total_tokens")},
+                total_token_stop=total_token_stop,
+                unknown_usage_attempts=sum(any(type((r.get("token_usage") or {}).get(key)) is not int
+                    for key in ("prompt_tokens", "completion_tokens", "total_tokens")) for r in completions) + len(pending))
+        return summary
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input", required=True, help="CAI input CSV or normalized JSONL")
     parser.add_argument("--limit", type=int, help="Run only the first N instructions")
+    parser.add_argument("--stop-on-anomaly", action="store_true",
+                        help="Stop batch on permission, repeated failures or abnormal usage")
+    parser.add_argument("--max-logical-requests", type=int)
     parser.add_argument("--run-id", default="mock-demo")
     parser.add_argument("--results-root", default="results")
-    parser.add_argument("--split", choices=("mock", "dev", "formal"), default="mock")
+    parser.add_argument("--split", choices=("mock", "dev", "formal", "pilot"), default="mock")
+    parser.add_argument("--allow-draft-pilot", action="store_true")
+    parser.add_argument("--snapshot-sha256")
+    parser.add_argument("--total-token-stop", type=int, default=300000)
+    parser.add_argument("--extend-token-budget", action="store_true")
     parser.add_argument("--real-api", action="store_true")
     parser.add_argument("--model-config", help="ModelConfig JSON (credentials only from environment)")
     parser.add_argument("--builder", help="Importable module:function implementing PromptBuilder")
@@ -329,7 +431,11 @@ def main():
         samples = samples[:args.limit]
     print(json.dumps(run_experiment(samples, results_root=args.results_root,
                      run_id=args.run_id, split=args.split, client=ModelClient(config),
-                     builder=builder, prompt_version=args.prompt_version), ensure_ascii=False))
+                     builder=builder, prompt_version=args.prompt_version,
+                     stop_on_anomaly=args.stop_on_anomaly,
+                     max_logical_requests=args.max_logical_requests,
+                     allow_draft_pilot=args.allow_draft_pilot, snapshot_sha256=args.snapshot_sha256,
+                     total_token_stop=args.total_token_stop, extend_token_budget=args.extend_token_budget), ensure_ascii=False))
 
 
 if __name__ == "__main__":
