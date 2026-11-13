@@ -111,6 +111,103 @@ class FullPilotTests(unittest.TestCase):
         with self.assertRaises(KeyError):
             builder(dict(current,instruction='different'),'zero_shot')
 
+    def test_no_limit_preserves_config_journal_prefix_and_usage(self):
+        self.run_job(total_token_stop=200)
+        folder = Path(self.tmp.name)/'pilot/pilot-test'
+        originals = {name: (folder/name).read_bytes() for name in
+                     ('run_config.json', 'attempts.jsonl', 'predictions.jsonl')}
+        result = self.run_job(no_token_limit=True)
+        self.assertEqual((result['calls_this_run'], result['final_predictions'], result['stopped_reason']), (1,3,None))
+        self.assertIsNone(result['total_token_stop'])
+        self.assertEqual(result['known_token_usage']['total_tokens'],300)
+        self.assertEqual((folder/'run_config.json').read_bytes(), originals['run_config.json'])
+        for name in ('attempts.jsonl', 'predictions.jsonl'):
+            self.assertTrue((folder/name).read_bytes().startswith(originals[name]))
+        event = json.loads((folder/'budget_events.jsonl').read_text().splitlines()[0])
+        self.assertEqual((event['event'],event['original_limit'],event['remaining_logical_requests']),
+                         ('token_limit_disabled',200,1))
+        self.assertEqual(event['opt_in_flag'],'no_token_limit=True')
+        self.assertEqual(event['journal_prefixes']['attempts.jsonl']['bytes'],len(originals['attempts.jsonl']))
+        self.assertEqual(self.run_job(no_token_limit=True)['calls_this_run'],0)
+        # Opt-in is invocation-scoped; removing it restores the original budget.
+        self.assertEqual(self.run_job(total_token_stop=200)['stopped_reason'],'token_budget_reached')
+
+    def test_no_limit_new_run_and_conflicting_flags(self):
+        with self.assertRaises(ValueError):
+            self.run_job(no_token_limit=True,extend_token_budget=True)
+        self.client.classify.assert_not_called()
+        self.assertEqual(self.run_job(no_token_limit=True)['calls_this_run'],3)
+        self.assertEqual(self.run_job(no_token_limit=True)['calls_this_run'],0)
+        with self.assertRaises(ValueError):
+            self.run_job()
+
+    def test_no_limit_rejects_other_configuration_changes(self):
+        self.run_job(total_token_stop=200)
+        with self.assertRaises(ValueError):
+            self.run_job(no_token_limit=True,prompt_version='changed')
+        self.assertEqual(self.client.classify.call_count,2)
+
+    def test_no_limit_never_truncates_incomplete_history(self):
+        self.run_job(total_token_stop=200)
+        path = Path(self.tmp.name)/'pilot/pilot-test/attempts.jsonl'
+        with path.open('ab') as stream:
+            stream.write(b'{"event":')
+        before = path.read_bytes()
+        with self.assertRaisesRegex(ValueError,'will not truncate history'):
+            self.run_job(no_token_limit=True)
+        self.assertEqual(path.read_bytes(),before)
+        self.assertEqual(self.client.classify.call_count,2)
+
+    def test_no_limit_keeps_all_safety_stops_and_retry(self):
+        from src.run_experiment import safety_stop
+        success = dict(status='success', token_usage=dict(prompt_tokens=99,completion_tokens=1,total_tokens=100))
+        cases = [
+            ([dict(status='error',error={'http_status':403})], 'authentication_or_permission_error'),
+            ([dict(status='error',error={'code':'authentication_error'})], 'authentication_or_permission_error'),
+            ([dict(status='error',error={'code':'rate_limit'})]*3, 'three_rate_limit_errors'),
+            ([dict(status='error')]*3, 'three_consecutive_unsuccessful_attempts'),
+            ([dict(status='success',token_usage={})], 'missing_or_invalid_token_usage'),
+            ([dict(status='success',token_usage=dict(prompt_tokens=16001,completion_tokens=1,total_tokens=16002))], 'abnormal_token_usage')]
+        for rows,reason in cases:
+            # Earlier budget crossing must not mask later historical safety stops.
+            with self.subTest(reason=reason):
+                self.assertEqual(safety_stop([success]*3001+rows,None),reason)
+        self.client.classify.side_effect = [
+            replace(self.client.classify.return_value,status='error',label=None,is_valid=False,token_usage={},
+                    error=ModelError('network_error','fixture',True)),
+            self.client.classify.return_value, self.client.classify.return_value, self.client.classify.return_value]
+        delays = Mock()
+        result = self.run_job(no_token_limit=True,sleep=delays)
+        self.assertEqual((result['calls_this_run'],result['valid_predictions']),(4,3))
+        delays.assert_called_once_with(2)
+        self.assertEqual(result['unknown_usage_attempts'],1)
+
+    def test_no_limit_historical_permission_stop_stays_latched(self):
+        self.client.classify.return_value = replace(self.client.classify.return_value,status='error',label=None,
+            is_valid=False,token_usage={},error=ModelError('permission_denied','fixture',False,403))
+        self.run_job(total_token_stop=200)
+        result = self.run_job(no_token_limit=True)
+        self.assertEqual((result['calls_this_run'],result['stopped_reason']),(0,'authentication_or_permission_error'))
+
+    def test_no_limit_new_safety_stops_stay_latched_on_resume(self):
+        success = self.client.classify.return_value
+        cases = [
+            (replace(success,status='error',label=None,is_valid=False,token_usage={},
+                     error=ModelError('network_error','fixture',True)),3,'three_consecutive_unsuccessful_attempts'),
+            (replace(success,status='error',label=None,is_valid=False,token_usage={},
+                     error=ModelError('rate_limit','fixture',True,429)),3,'three_rate_limit_errors'),
+            (replace(success,token_usage={}),1,'missing_or_invalid_token_usage'),
+            (replace(success,token_usage=dict(prompt_tokens=99,completion_tokens=65,total_tokens=164)),1,'abnormal_token_usage')]
+        for index,(response,calls,reason) in enumerate(cases):
+            with self.subTest(reason=reason):
+                self.client.classify.reset_mock()
+                self.client.classify.return_value = response
+                opts = dict(run_id='safety-'+str(index),no_token_limit=True,sleep=lambda _: None)
+                result = self.run_job(**opts)
+                self.assertEqual((result['calls_this_run'],result['stopped_reason']),(calls,reason))
+                self.assertEqual(self.run_job(**opts)['calls_this_run'],0)
+                self.assertEqual(self.client.classify.call_count,calls)
+
 
 if __name__=='__main__':
     unittest.main()

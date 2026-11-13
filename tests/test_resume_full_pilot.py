@@ -37,7 +37,9 @@ class RecoveryTests(unittest.TestCase):
         for relative in plan['source_sha256']:
             target = self.root/relative
             target.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copyfile(SOURCE/relative, target)
+            # Historical recovery uses its sealed runner, independently of
+            # later workspace runner updates.
+            shutil.copyfile(self.folder/'snapshot'/relative, target)
         for context in (patch.object(full_pilot, 'ROOT', self.root),
                         patch.object(recovery, 'ROOT', self.root),
                         patch.object(socket.socket, 'connect', side_effect=AssertionError('Network forbidden')),

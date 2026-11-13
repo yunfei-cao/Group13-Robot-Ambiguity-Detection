@@ -1,0 +1,4 @@
+﻿strategy,calls,successful,failed,unknown_usage,prompt_tokens,completion_tokens,total_tokens,mean_latency_ms,p95_latency_ms,calls_with_latency
+zero_shot,174,170,4,4,88979,575,89554,2429.7130666661474,4426.233290003438,174
+few_shot,174,170,4,4,145419,605,146024,2549.458896552765,4734.641724989341,174
+checklist,173,170,3,3,112949,550,113499,2137.250315027703,3570.5241999938175,173

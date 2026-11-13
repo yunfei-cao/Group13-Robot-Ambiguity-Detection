@@ -4,6 +4,7 @@
 /results/formal/** -text
 /results/analysis/** -text
 /results/reports/** -text
+/results/prompt_comparison/** -text
 /scripts/full_pilot.py -text
 /scripts/pilot_round2.py -text
 
@@ -13,6 +14,9 @@
 /src/prompts.py text eol=crlf
 /src/prompt_adapter.py text eol=crlf
 /src/model_client.py text eol=lf
+/src/prompt_v03_adapter.py text eol=lf
+/scripts/prompt_v03_comparison.py text eol=lf
+/scripts/run_prompt_comparison.ps1 text eol=lf
 /data/processed/test_inputs.csv text eol=crlf
 /prompts/*.txt text eol=crlf
 /prompts/*.json text eol=crlf

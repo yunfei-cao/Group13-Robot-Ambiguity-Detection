@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "event": "authorize_no_token_limit_runner_update",
+  "timestamp": "2026-11-13T15:41:36.352355+00:00",
+  "run_id": "group13-dev-v01-v03-20261113T150521Z-b2a4a074-candidate",
+  "variant": "candidate",
+  "plan_sha256": "da118f3684916ca91c9d2986e4e24fe13083c9ffd572e491f05c0159c9b424e8",
+  "original_code_sha256": {
+    "src/prompt_v03_adapter.py": "46da437588d01ce8d5f74844d5f2b63fd029ac6172ac661f808e492d3831a2ad",
+    "scripts/prompt_v03_comparison.py": "50979aacdf23fa361c861e6b33cb00d542a18404f1cfca0e35f32b4e9406086f",
+    "src/model_client.py": "1373cdaeee95d2c2421cd4445ef189b7d924df301268582076d8dd9f16b8edbf",
+    "src/run_experiment.py": "cff5a2f273f66189d231491a5e8e911a62500400be43e484debc93d90cb37bc4",
+    "src/prompt_adapter.py": "a05898b5a4c300aa674fc6da9970c7952e97a07ca845b5c925b52339e7fa8853",
+    "src/prompts.py": "ec67ea6c26dd91cdc531c56dfc6b3578787f5bf6d5e1fe9c95bccc85c2c9927c"
+  },
+  "approved_code_sha256": {
+    "src/prompt_v03_adapter.py": "46da437588d01ce8d5f74844d5f2b63fd029ac6172ac661f808e492d3831a2ad",
+    "scripts/prompt_v03_comparison.py": "117b6d1c1f261920e1b996adc58c7fa716d92fc2a040e755b9f9e7ebf59d93ea",
+    "src/model_client.py": "1373cdaeee95d2c2421cd4445ef189b7d924df301268582076d8dd9f16b8edbf",
+    "src/run_experiment.py": "3dc92fe56b5baf63961684643f2cb33343a8d6094dbce5bfeee336cb09f0e6cc",
+    "src/prompt_adapter.py": "a05898b5a4c300aa674fc6da9970c7952e97a07ca845b5c925b52339e7fa8853",
+    "src/prompts.py": "ec67ea6c26dd91cdc531c56dfc6b3578787f5bf6d5e1fe9c95bccc85c2c9927c"
+  },
+  "required_flag": "--no-token-limit",
+  "effective_total_token_stop": null,
+  "authorization": "User explicitly requested unlimited cumulative token mode for Group 13 v0.1/v0.3 and reviewed removal of the candidate 300000-token stop. This session authorizes code/configuration and offline checks only; real execution must be launched manually later.",
+  "reviewed_predictions": 440,
+  "reviewed_valid_predictions": 440,
+  "remaining_logical_requests": 70,
+  "historical_files_manifest": "runner_updates/no_token_limit_20261113/historical_files_sha256.json",
+  "evidence_sha256": {
+    "runner_updates/no_token_limit_20261113/historical_files_sha256.json": "b5d4f8422034fdea28a6720176c78b155aadff41927eda12c3eea37221204ddc",
+    "runner_updates/no_token_limit_20261113/before/scripts/prompt_v03_comparison.py": "50979aacdf23fa361c861e6b33cb00d542a18404f1cfca0e35f32b4e9406086f",
+    "runner_updates/no_token_limit_20261113/before/src/run_experiment.py": "cff5a2f273f66189d231491a5e8e911a62500400be43e484debc93d90cb37bc4",
+    "runner_updates/no_token_limit_20261113/after/scripts/prompt_v03_comparison.py": "117b6d1c1f261920e1b996adc58c7fa716d92fc2a040e755b9f9e7ebf59d93ea",
+    "runner_updates/no_token_limit_20261113/after/scripts/run_prompt_comparison.ps1": "de1b6f5024861685cf2c7838c464ba6eb9eace4e359b3ed654554699fc16c320",
+    "runner_updates/no_token_limit_20261113/after/src/run_experiment.py": "3dc92fe56b5baf63961684643f2cb33343a8d6094dbce5bfeee336cb09f0e6cc"
+  },
+  "real_api_calls": 0,
+  "execution_performed": false
+}

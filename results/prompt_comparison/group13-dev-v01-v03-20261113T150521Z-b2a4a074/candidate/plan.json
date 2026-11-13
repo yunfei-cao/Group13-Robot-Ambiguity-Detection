@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "comparison_id": "group13-dev-v01-v03-20261113T150521Z-b2a4a074",
+  "variant": "candidate",
+  "run_id": "group13-dev-v01-v03-20261113T150521Z-b2a4a074-candidate",
+  "prompt_version": "v0.3-candidate",
+  "dataset_split": "dev",
+  "runner_split": "pilot",
+  "experiment_kind": "development_comparison_not_final",
+  "instructions": 170,
+  "pairs": 85,
+  "logical_requests": 510,
+  "initial_token_stop": 300000,
+  "dataset_sha256": "23d26e3026d0a9b218382e4a3c2aa4f3af129d8e34740d59e8e2d1f2bc25f522",
+  "prompt_messages_sha256": "c0649646cbef5bcd59f936f77de5c7efd5924401b6b60e48f579c9b8372315b9",
+  "sealed_files_sha256": {
+    "snapshot/dev_inputs.csv": "e2102ff8bc0d62a5f5af361e8cc546369ee071cab687ef8e1951959f9a90f648",
+    "snapshot/hash_audit.json": "2374118a19c0ef76e01299e222a9bdfee763d19ff829d5eb3391b3f0766ce58a",
+    "snapshot/messages.json": "9c7aa2c39f3a7386782abab60022fbe147415009eb8ca57d484b30a66dd36e43",
+    "snapshot/verified_lf/prompts.py": "6036089326376de45086954b7238da6cfc9cca6662fd83abc4b1906b5ab9a914",
+    "snapshot/verified_lf/prompts/checklist.txt": "450f5852e1233d1d9cfc304be7bfa5a0df27da2f72065e6d6e7f859e37bbc468",
+    "snapshot/verified_lf/prompts/few_shot.txt": "a77fddaa2e7a8750bb29ab5c0aaccd76e5df8b12dce649bb353d6f9a642678f8",
+    "snapshot/verified_lf/prompts/few_shot_examples.json": "e57a9b5ea42a147f8f10005abc8439c25c6de2185d578dd8a5cbd5f85c555f8d",
+    "snapshot/verified_lf/prompts/preview_messages.json": "7ff3a3f24a71f0e4da8ca9b8ebf99b23778ba288f2204dc5319fde7b34cdc6c0",
+    "snapshot/verified_lf/prompts/prompt_manifest.json": "f838f7eaf0d62b96f785e53d1ef0abc053217465186fbd35a5e0e14420e322ae",
+    "snapshot/verified_lf/prompts/zero_shot.txt": "711c8e0ef2b4064d0b16a6cf84d906c83f5f363cde18c77f8c370d47d9aaa1f2",
+    "model_config.json": "2c177dba96b13a08dbdcd5fe872b7deec31bad7bbc7c1ce7ce09adbbba1f3683"
+  },
+  "code_raw_sha256": {
+    "src/prompt_v03_adapter.py": "46da437588d01ce8d5f74844d5f2b63fd029ac6172ac661f808e492d3831a2ad",
+    "scripts/prompt_v03_comparison.py": "50979aacdf23fa361c861e6b33cb00d542a18404f1cfca0e35f32b4e9406086f",
+    "src/model_client.py": "1373cdaeee95d2c2421cd4445ef189b7d924df301268582076d8dd9f16b8edbf",
+    "src/run_experiment.py": "cff5a2f273f66189d231491a5e8e911a62500400be43e484debc93d90cb37bc4",
+    "src/prompt_adapter.py": "a05898b5a4c300aa674fc6da9970c7952e97a07ca845b5c925b52339e7fa8853",
+    "src/prompts.py": "ec67ea6c26dd91cdc531c56dfc6b3578787f5bf6d5e1fe9c95bccc85c2c9927c"
+  },
+  "overlap_sha256": "9228be716b5a76726c5a34c887d671e00b33b6a7a5de99164eb3ed32e2da3330",
+  "pair_table_sha256": "7f25a83b92b58095227a6351b51ebc5ac65d2b8510e82b261a33e575eb83149f",
+  "launcher_sha256": "a4171492119b817e3665b56c7fd56f36bc0b555c5cf6460a86d256d44d27b5a9",
+  "authorization": "Preparation only; user manually launches real API commands.",
+  "historical_test_results_seen": true,
+  "real_calls_during_preparation": 0
+}

@@ -9,7 +9,7 @@ from types import SimpleNamespace
 import unittest
 from unittest.mock import Mock, patch
 
-from scripts import pilot_round2 as repeat
+from scripts import full_pilot, pilot_round2 as repeat
 from src.model_client import ModelClient, ModelConfig, ModelError
 from src.run_experiment import STRATEGIES, load_samples, run_experiment
 
@@ -38,6 +38,28 @@ class Round2Tests(unittest.TestCase):
             snapshot_sha256=repeat.sha(self.manifest), total_token_stop=300000, sleep=lambda _: None)
 
     def test_check_read_only_no_credentials_or_gold_access(self):
+        # Validate the historical experiment against its frozen source tree.
+        # New workspace runner versions must not require rewriting old seals.
+        frozen_root = Path(self.tmp.name)/'historical'
+        source = repeat.ROOT/'results/pilot'/repeat.SOURCE_ID
+        for folder in (source, self.folder):
+            shutil.copytree(folder, frozen_root/'results/pilot'/folder.name)
+        for relative in self.plan['source_sha256']:
+            target = frozen_root/relative
+            target.parent.mkdir(parents=True,exist_ok=True)
+            shutil.copyfile(source/'snapshot'/relative,target)
+        self.folder = frozen_root/'results/pilot'/self.folder.name
+        self.manifest = self.folder/'pilot_manifest.json'
+        summary_path = self.folder/'execution_summaries.jsonl'
+        if summary_path.exists():
+            summaries = [json.loads(line) for line in summary_path.read_text().splitlines()]
+            for row in summaries:
+                row['output_dir'] = str(self.folder.resolve())
+            summary_path.write_text(''.join(json.dumps(row)+'\n' for row in summaries),encoding='utf-8')
+        for module in (repeat,full_pilot):
+            context = patch.object(module,'ROOT',frozen_root)
+            context.start()
+            self.addCleanup(context.stop)
         before = repeat.seals(repeat.ROOT/'results/pilot'/repeat.SOURCE_ID)
         second_before = repeat.seals(self.folder)
         original = Path.open

@@ -14,6 +14,8 @@ __pycache__/
 # Local report dependencies, render QA and duplicate delivery archives
 /results/reports/_dependencies/
 /results/reports/_qa/
+/results/reports/v03_development_evaluation/_qa/
+/results/prompt_comparison/**/.lock
 /results/reports/Group13_Report_Package.zip
 /results/upload_audit/
 ~$*.docx

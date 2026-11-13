@@ -1,0 +1,4 @@
+﻿strategy,predictions,unique_sample_ids,duplicates,missing_ids,extra_ids,valid_outputs,pairs
+zero_shot,170,170,0,0,0,170,85
+few_shot,170,170,0,0,0,170,85
+checklist,170,170,0,0,0,170,85
