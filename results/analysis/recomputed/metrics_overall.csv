@@ -1,0 +1,4 @@
+strategy,n,correct,accuracy,macro_f1,miss_rate,unnecessary_rate,pair_accuracy,n_pairs,valid_output_rate
+zero_shot,170,98,0.576471,0.576236,0.447059,0.4,0.188235,85,1.0
+checklist,170,97,0.570588,0.569381,0.482353,0.376471,0.2,85,1.0
+few_shot,170,96,0.564706,0.564646,0.423529,0.447059,0.176471,85,1.0
