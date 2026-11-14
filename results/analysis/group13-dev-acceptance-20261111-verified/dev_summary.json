@@ -1,0 +1,217 @@
+{
+  "source_run": "group13-dev-qwen20-20261111T060727Z-d9300025",
+  "generated_at": "2026-11-11T07:58:26.879157+00:00",
+  "strategies": {
+    "zero_shot": {
+      "logical_requests": 20,
+      "final_statuses": {
+        "success": 19,
+        "interrupted": 1
+      },
+      "valid_predictions": 19,
+      "coverage": 0.95,
+      "started_intents": 22,
+      "completed_attempts": 21,
+      "attempt_statuses": {
+        "error": 2,
+        "success": 19
+      },
+      "error_codes": {
+        "timeout": 2
+      },
+      "known_token_usage": {
+        "prompt_tokens": 6002,
+        "completion_tokens": 89,
+        "total_tokens": 6091
+      },
+      "unknown_usage_completed_attempts": 2,
+      "unknown_outcome_attempts": 1,
+      "known_attempt_latency_seconds": 78.43503840011545,
+      "completed_attempt_latency_mean_seconds": 3.735001828576926,
+      "successful_attempt_latency_mean_seconds": 1.8837618947421249,
+      "successful_attempt_latency_median_seconds": 1.7248693000292405,
+      "successful_attempt_latency_max_seconds": 2.879031800024677,
+      "valid_only": {
+        "samples": 19,
+        "correct": 10,
+        "gold_distribution": {
+          "CLEAR": 10,
+          "NEEDS_CLARIFICATION": 9
+        },
+        "accuracy": 0.5263157894736842,
+        "macro_f1": 0.5043478260869565
+      },
+      "all_records_metrics": {
+        "total_samples": 20,
+        "total_pairs": 10,
+        "accuracy": 0.5,
+        "f1_clear": 0.4,
+        "f1_needs_clarification": 0.5833333333333334,
+        "macro_f1": 0.4916666666666667,
+        "missed_ambiguity_rate": 0.3,
+        "unnecessary_clarification_rate": 0.7,
+        "pair_level_correctness": 0.2,
+        "valid_output_rate": 0.95,
+        "invalid_count": 0,
+        "request_failed_count": 1,
+        "always_clear_baseline_accuracy": 0.5,
+        "always_clarify_baseline_accuracy": 0.5
+      },
+      "confusion": {
+        "CLEAR": {
+          "CLEAR": 3,
+          "NEEDS_CLARIFICATION": 7
+        },
+        "NEEDS_CLARIFICATION": {
+          "NEEDS_CLARIFICATION": 7,
+          "REQUEST_FAILED": 1,
+          "CLEAR": 2
+        }
+      }
+    },
+    "few_shot": {
+      "logical_requests": 20,
+      "final_statuses": {
+        "success": 20
+      },
+      "valid_predictions": 20,
+      "coverage": 1.0,
+      "started_intents": 20,
+      "completed_attempts": 20,
+      "attempt_statuses": {
+        "success": 20
+      },
+      "error_codes": {},
+      "known_token_usage": {
+        "prompt_tokens": 12403,
+        "completion_tokens": 105,
+        "total_tokens": 12508
+      },
+      "unknown_usage_completed_attempts": 0,
+      "unknown_outcome_attempts": 0,
+      "known_attempt_latency_seconds": 47.08517830009805,
+      "completed_attempt_latency_mean_seconds": 2.3542589150049027,
+      "successful_attempt_latency_mean_seconds": 2.3542589150049027,
+      "successful_attempt_latency_median_seconds": 2.1785569000348914,
+      "successful_attempt_latency_max_seconds": 3.5921133999945596,
+      "valid_only": {
+        "samples": 20,
+        "correct": 11,
+        "gold_distribution": {
+          "CLEAR": 10,
+          "NEEDS_CLARIFICATION": 10
+        },
+        "accuracy": 0.55,
+        "macro_f1": 0.48717948717948717
+      },
+      "all_records_metrics": {
+        "total_samples": 20,
+        "total_pairs": 10,
+        "accuracy": 0.55,
+        "f1_clear": 0.3076923076923077,
+        "f1_needs_clarification": 0.6666666666666666,
+        "macro_f1": 0.48717948717948717,
+        "missed_ambiguity_rate": 0.1,
+        "unnecessary_clarification_rate": 0.8,
+        "pair_level_correctness": 0.1,
+        "valid_output_rate": 1.0,
+        "invalid_count": 0,
+        "request_failed_count": 0,
+        "always_clear_baseline_accuracy": 0.5,
+        "always_clarify_baseline_accuracy": 0.5
+      },
+      "confusion": {
+        "CLEAR": {
+          "CLEAR": 2,
+          "NEEDS_CLARIFICATION": 8
+        },
+        "NEEDS_CLARIFICATION": {
+          "NEEDS_CLARIFICATION": 9,
+          "CLEAR": 1
+        }
+      }
+    },
+    "checklist": {
+      "logical_requests": 20,
+      "final_statuses": {
+        "success": 20
+      },
+      "valid_predictions": 20,
+      "coverage": 1.0,
+      "started_intents": 20,
+      "completed_attempts": 20,
+      "attempt_statuses": {
+        "success": 20
+      },
+      "error_codes": {},
+      "known_token_usage": {
+        "prompt_tokens": 8863,
+        "completion_tokens": 95,
+        "total_tokens": 8958
+      },
+      "unknown_usage_completed_attempts": 0,
+      "unknown_outcome_attempts": 0,
+      "known_attempt_latency_seconds": 39.55529580032453,
+      "completed_attempt_latency_mean_seconds": 1.9777647900162265,
+      "successful_attempt_latency_mean_seconds": 1.9777647900162265,
+      "successful_attempt_latency_median_seconds": 1.7048007000412326,
+      "successful_attempt_latency_max_seconds": 4.892943900020327,
+      "valid_only": {
+        "samples": 20,
+        "correct": 11,
+        "gold_distribution": {
+          "CLEAR": 10,
+          "NEEDS_CLARIFICATION": 10
+        },
+        "accuracy": 0.55,
+        "macro_f1": 0.52
+      },
+      "all_records_metrics": {
+        "total_samples": 20,
+        "total_pairs": 10,
+        "accuracy": 0.55,
+        "f1_clear": 0.4,
+        "f1_needs_clarification": 0.64,
+        "macro_f1": 0.52,
+        "missed_ambiguity_rate": 0.2,
+        "unnecessary_clarification_rate": 0.7,
+        "pair_level_correctness": 0.2,
+        "valid_output_rate": 1.0,
+        "invalid_count": 0,
+        "request_failed_count": 0,
+        "always_clear_baseline_accuracy": 0.5,
+        "always_clarify_baseline_accuracy": 0.5
+      },
+      "confusion": {
+        "CLEAR": {
+          "CLEAR": 3,
+          "NEEDS_CLARIFICATION": 7
+        },
+        "NEEDS_CLARIFICATION": {
+          "NEEDS_CLARIFICATION": 8,
+          "CLEAR": 2
+        }
+      }
+    }
+  },
+  "total_final_records": 60,
+  "valid_predictions": 59,
+  "coverage": 0.9833333333333333,
+  "started_intents": 62,
+  "completed_attempts": 61,
+  "known_token_usage": {
+    "prompt_tokens": 27268,
+    "completion_tokens": 289,
+    "total_tokens": 27557
+  },
+  "observed_journal_span_seconds": 230.268363,
+  "known_attempt_latency_seconds": 165.07551250053803,
+  "notes": [
+    "Started counts are persisted intents, not confirmed provider deliveries.",
+    "Token sums are lower bounds: two timeout attempts and one interrupted outcome have unknown usage.",
+    "Known latency excludes the interrupted attempt, retry waits and restart downtime.",
+    "Valid-only metrics exclude failed outputs; all-record metrics use unchanged WANG evaluator.",
+    "Valid-only sample metrics may include incomplete pairs; no valid-only pair accuracy is reported.",
+    "20 instructions/10 pairs selected by first eligible CSV order; preliminary, not randomized population estimate."
+  ]
+}

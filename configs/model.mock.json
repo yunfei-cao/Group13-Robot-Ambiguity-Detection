@@ -1,0 +1,8 @@
+{
+  "mode": "mock",
+  "mock_response": "CLEAR",
+  "allow_real_requests": false,
+  "temperature": 0.0,
+  "max_tokens": 64,
+  "timeout_seconds": 30
+}

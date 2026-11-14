@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "run_id": "group13-full-pilot-qwen200-20261111T090248Z-76877106",
+  "reason": "three_consecutive_unsuccessful_attempts",
+  "authorization": "User requested explicit recovery of reviewed historical consecutive failures only; retain all safeguards and 300000 token limit.",
+  "authorization_source": "User request in this session: explicitly authorized implementation of reviewed-stop recovery; actual paid execution remains user-launched with explicit flag.",
+  "authorization_sha256": "14f281cf90bd1f9547ce981d1f945d7168da98aa13afd596301fff2cf80ce6ef",
+  "journal_prefixes": {
+    "attempts.jsonl": {
+      "bytes": 50298,
+      "sha256": "a68ff4b1ea7e731f2b53bd0d8a1df88079e77be821809ffa4da58b19cc818318"
+    },
+    "predictions.jsonl": {
+      "bytes": 19233,
+      "sha256": "0384185f3c01b3b8d09f0afdbc4f1cdd9662e9bf6082225dd7d0442f38afd81e"
+    },
+    "execution_summaries.jsonl": {
+      "bytes": 1235,
+      "sha256": "71eabe41dbe6516f14355f75991c46b3e696107417bbb42f9ee8e70919cfd056"
+    }
+  },
+  "reviewed_completions": 45,
+  "historical_stop": {
+    "logical_id": "4ce71e800a2f483f8c678c0f399c4ffcc9f1d02f11be3d0a0fc881992bf43b03",
+    "sample_id": "s_9c65df4c253e6019484e",
+    "strategy": "few_shot",
+    "run_id": "group13-full-pilot-qwen200-20261111T090248Z-76877106",
+    "prompt_sha256": "70ef2ab041af8027058f8edb707c72004a721b0d33fb47ec05a8b493ae784786",
+    "status": "error",
+    "label": null,
+    "is_valid": false,
+    "raw_text": "",
+    "model_id": "qwen-plus-2025-12-01",
+    "latency_ms": 475.2741999691352,
+    "token_usage": {
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "total_tokens": null
+    },
+    "error": {
+      "code": "network_error",
+      "message": "Qwen network request failed",
+      "retryable": true,
+      "http_status": null,
+      "provider_code": null,
+      "request_id": null
+    },
+    "event": "completed",
+    "attempt_number": 3,
+    "retry_count": 2,
+    "timestamp": "2026-11-11T09:11:37.801364+00:00"
+  },
+  "reviewed_at": "2026-11-11T09:38:24.220792+00:00",
+  "scope": "Reset only the reviewed historical consecutive-failure counter. Do not retry existing final records. Preserve permission, usage, rate-limit and cumulative 300000 token stops.",
+  "historical_final_records": 32,
+  "historical_valid_records": 31,
+  "remaining_unstarted": 568,
+  "real_api_calls": 0
+}

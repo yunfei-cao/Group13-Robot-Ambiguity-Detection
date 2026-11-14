@@ -1,0 +1,20 @@
+{
+  "checked_at": "2026-11-11T09:02:49.716586+00:00",
+  "run_id": "group13-full-pilot-qwen200-20261111T090248Z-76877106",
+  "instructions": 200,
+  "complete_pairs": 100,
+  "strategy_counts": {
+    "zero_shot": 200,
+    "few_shot": 200,
+    "checklist": 200
+  },
+  "logical_requests": 600,
+  "prompt_version": "v0.1-dev",
+  "prompt_status": "DRAFT: development pilot pending",
+  "hashes_match": true,
+  "current_input_fields": [
+    "environment",
+    "instruction"
+  ],
+  "real_api_calls": 0
+}
