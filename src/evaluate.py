@@ -1,10 +1,3 @@
-# ============================================================
-# Group 13 - WANG HONGFENG
-# evaluate.py
-# Purpose: validate model outputs and calculate evaluation metrics
-# This version uses simulated data first. It does not need pandas.
-# ============================================================
-
 from collections import defaultdict
 import csv
 from pathlib import Path
