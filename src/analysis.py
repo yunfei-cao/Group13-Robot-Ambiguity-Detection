@@ -19,7 +19,6 @@ POSITIVE = "NEEDS_CLARIFICATION"
 
 
 def class_f1(gold, pred, label):
-    """F1 = 2TP / (2TP + FP + FN)；分母为 0 时返回 0。"""
     tp = ((gold == label) & (pred == label)).sum()
     fp = ((gold != label) & (pred == label)).sum()
     fn = ((gold == label) & (pred != label)).sum()
@@ -28,7 +27,6 @@ def class_f1(gold, pred, label):
 
 
 def metrics_for(gold, pred):
-    """一组预测的五项指标（有效输出率另算）。分母口径按手册第 6 页。"""
     n = len(gold)
     correct = (gold == pred).sum()
     yes, no = (gold == POSITIVE), (gold == "CLEAR")
