@@ -1,5 +1,3 @@
-"""WANG's scoring contracts, exercised offline with hand-built records.
-
 These tests pin the rules that every number in the report has to be
 reproducible against: strip-only label matching, INVALID versus
 REQUEST_FAILED, the six metric denominators, and the four manual-check
