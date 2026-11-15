@@ -32,65 +32,100 @@ STRATEGIES = ('zero_shot', 'few_shot', 'checklist')
 # is a hard error rather than a silently blank cell in the report.
 NOTES = {
     's_189912ddd83d9e90f9f3':
-        '环境中只有一种切片面包（a sliced bread）和一台 toaster，动作对象与器具都唯一，'
-        '指令不含需要消解的成分。三种策略两轮均判 CLEAR，是"对象唯一 + 参数可执行"的最简单正例。',
+        'The environment contains exactly one sliced bread and one toaster, so both the object and the tool are '
+        'uniquely identified and the instruction leaves nothing to resolve. All three strategies answer CLEAR in '
+        'both rounds: the simplest positive case of a unique object with executable parameters.',
     's_195ab566fe4c7cd3afbd':
-        '鸡蛋、切达奶酪、frying pan 三样必需要素都在环境中且各自唯一，动作链完整。'
-        '三种策略稳定判 CLEAR，说明当食材、容器、器具都能在环境里逐一落地时，模型不会凭空索要澄清。',
+        'Eggs, cheddar cheese and the frying pan are all present and each occurs once, so the action chain is '
+        'complete. All three strategies answer CLEAR stably, showing that when ingredients, container and tool can '
+        'each be grounded in the environment the model does not invent a clarification request.',
     's_26c1d58255b90b1694ac':
-        '环境里 plastic / metal / ceramic bowl 并存，但指令已用材质把对象限定为 ceramic bowl，'
-        'paper towels 也唯一。可见决定清晰与否的是"被指对象是否唯一确定"，而非环境里同类物品的数量。三种策略均判对。',
+        'Plastic, metal and ceramic bowls all exist in the environment, but the instruction restricts the referent '
+        'to the ceramic bowl and paper towels are unique. What decides clarity is whether the referent is uniquely '
+        'determined, not how many similar objects the scene holds. All three strategies are correct.',
     's_02f7e32fa52a6d864f19':
-        '环境中有 milk / almond milk / dark 三种 chocolate tablet，"the chocolate tablet"没有唯一指代，'
-        '属真正的指代歧义。三种策略两轮全部判 NEEDS_CLARIFICATION，说明指代不唯一是最容易被模型捕捉的歧义类型。',
+        'The environment holds three chocolate tablets (milk, almond milk, dark), so "the chocolate tablet" has no '
+        'unique referent: a genuine referential ambiguity. All three strategies answer NEEDS_CLARIFICATION in both '
+        'rounds, which makes non-unique reference the ambiguity type these models detect most reliably.',
     's_0a10f5bfaa0422a15fe0':
-        '烘烤温度与时间均缺失，"until done"没有可执行判据，属参数歧义。三种策略稳定判对。'
-        '与案例 8（test 842，明确写了 350°F / 15 分钟与 baking dish）对照，可看出"参数是否可执行"是模型判断的关键线索。',
+        'Neither oven temperature nor duration is given, and "until done" offers no executable stopping rule: a '
+        'parameter ambiguity. All three strategies are correct. Compare case 8 (test 842), where 350F and 15 '
+        'minutes are stated, to see how parameter executability drives the decision.',
     's_0881fd0f539f7a8abdd3':
-        '指令是一整段完整流程，但环境清单里只有蔬菜、刀具与部分器具（knife block、番茄、卷心菜、黄瓜……），'
-        '并未列出指令提到的 sink、clean sponge、kitchen towel、mixing bowl 与 olive oil。gold 仍标 CLEAR，'
-        '说明该数据集的 gold 以"指令文本本身是否无歧义"为准，而不是"环境是否覆盖所有被提及的物件"。'
-        '三种策略统一判 NEEDS_CLARIFICATION，正是按后者判断的结果——这类系统性差异是多余澄清率偏高的主要来源，'
-        '也提示 gold 语义需要人工复核（`data_manifest.json` 中的 manual_semantic_review 仍为 PENDING）。',
+        'The instruction is one long but explicit procedure, yet the environment lists only vegetables and cutting '
+        'tools (knife block, tomato, cabbage, cucumber and so on) and does not contain the sink, clean sponge, '
+        'kitchen towel, mixing bowl or olive oil the instruction refers to. Gold is still CLEAR, so this dataset '
+        'labels an instruction clear when its text is self-contained, not when the scene can execute it. All three '
+        'strategies answer NEEDS_CLARIFICATION by the second criterion. This systematic gap is a main source of the '
+        'elevated unnecessary-clarification rate and shows why gold semantics need manual review '
+        '(manual_semantic_review is still PENDING in data_manifest.json).',
     's_0b7d7474407d3bf152c6':
-        'gold 标为 CLEAR（烤箱温度与时间被视作可凭常识补全），但环境里只有 stove，没有 oven，'
-        '字面上既缺参数也缺器具，属边界样本。Checklist 判对，Zero-shot 与 Few-shot 判错。'
-        '本例说明标签语义并不等于环境可执行性，而 Checklist 的结构化检查更贴近 gold 口径。',
+        'Gold is CLEAR, treating oven temperature and time as commonsense defaults, but the environment lists a '
+        'stove and no oven, so the instruction is literally short of both a parameter and a tool: a borderline '
+        'sample. Checklist is correct while Zero-shot and Few-shot are wrong, which shows the label does not '
+        'coincide with scene executability and that the structured Checklist tracks the gold convention more closely.',
     's_2bb6ef81cbafaa6811c7':
-        '温度（350°F）、时长（15 分钟）、容器（baking dish）与原料都写明，但环境里只列了 oven mitts，'
-        '没有 oven 本身，三种策略仍全判 NEEDS_CLARIFICATION。与案例 5 构成镜像：案例 5 缺参数被判对，'
-        '本例参数齐全却因器具缺失被判歧义，反映模型对"烘焙/温度"类指令的保守倾向，同时也说明'
-        '被提及物件未出现在环境中时，模型几乎必然索要澄清。',
+        'Temperature (350F), duration (15 minutes), container (baking dish) and ingredients are all stated, yet the '
+        'environment lists only oven mitts and no oven, and all three strategies still answer NEEDS_CLARIFICATION. '
+        'This mirrors case 5: there a missing parameter was correctly flagged, here complete parameters are still '
+        'treated as ambiguous because the appliance is absent. It shows the conservative bias on baking-style '
+        'instructions and the fact that a referenced object missing from the scene nearly always triggers a request.',
     's_012698e1f503e46799fe':
-        'gold 为 NEEDS_CLARIFICATION，原因是过程参数不确定：用多少 heavy cream 与 sour cream、'
-        '煮多久、搅到何种程度都未给出——本例的对象与器具在环境中均齐备，缺的只是过程参数。'
-        '三种策略却全判 CLEAR，是典型漏检：模型只核对了"对象是否存在"，没有核对"过程是否可执行"。'
-        '这正是漏检率 0.46 / 0.21 / 0.44 的成因。',
+        'Gold is NEEDS_CLARIFICATION because the process is underspecified: how much heavy cream and sour cream, '
+        'how long to cook and how far to stir are left open, while every object and tool is present in the scene. '
+        'All three strategies answer CLEAR, a clear false negative. The model checks whether objects exist but not '
+        'whether the process is executable, which is exactly what drives missed-ambiguity rates of '
+        '0.46 / 0.21 / 0.44.',
     's_02be24721a136a1d637a':
-        '"until done"与案例 5 属同一歧义类型，但这里三种策略中有两种判 CLEAR（仅 Few-shot 判对）。'
-        '同一歧义在不同上下文中被区别对待，说明模型判断不稳定，单条指令的表现不能外推为策略能力。',
+        '"until done" is the same ambiguity type as case 5, yet here two of the three strategies answer CLEAR and '
+        'only Few-shot is correct. The same ambiguity is treated differently in different contexts, so the decision '
+        'is not stable and a single instruction cannot be extrapolated into a strategy capability.',
     's_0259b77552c8d8d6b550':
-        '环境里同时有 stainless steel / wooden tablespoon 与 silver teaspoon，但指令已指定不锈钢汤匙，指代唯一。'
-        'Few-shot 判 NEEDS_CLARIFICATION，Zero-shot 与 Checklist 判 CLEAR——Few-shot 的过度敏感在此直接产生多余澄清。',
+        'The environment holds a stainless steel tablespoon, a wooden tablespoon and a silver teaspoon, but the '
+        'instruction names the stainless steel one, so the reference is unique. Few-shot answers '
+        'NEEDS_CLARIFICATION while Zero-shot and Checklist answer CLEAR: Few-shot over-sensitivity turns directly '
+        'into an unnecessary clarification here.',
     's_04247c8bffe09de638b8':
-        '指令要求"serve the coleslaw in a salad bowl"，但环境里只有 mixer、bowl、cupboard 等，没有 salad bowl，'
-        '执行前提不满足故 gold 为 NEEDS_CLARIFICATION。三种策略中仅 Few-shot 命中，'
-        '说明 Few-shot 的高召回来自"对任何缺项都发问"，代价是 66% 的多余澄清率。',
+        'The instruction asks to serve the coleslaw in a salad bowl, but the environment lists a mixer, a bowl and a '
+        'cupboard, and no salad bowl, so the precondition cannot be met and gold is NEEDS_CLARIFICATION. Only '
+        'Few-shot catches it, which shows that the higher recall of Few-shot comes from asking whenever anything is '
+        'missing, at the cost of a 66 percent unnecessary-clarification rate.',
     's_68fec364435b48203b05':
-        '环境里 vanilla yogurt cup 与 greek yogurt cup 并存，指令已指名 vanilla，指代唯一，gold 为 CLEAR。'
-        'Zero-shot 与 Few-shot 判错、Checklist 判对——Checklist 中"对象指代"这一检查项帮助它确认了唯一指代，'
-        '是本批案例中 Checklist 独占正确的代表。',
+        'The environment holds both a vanilla yogurt cup and a greek yogurt cup, and the instruction already names '
+        'the vanilla one, so the reference is unique and gold is CLEAR. Zero-shot and Few-shot are wrong while '
+        'Checklist is correct: the object-reference item on the Checklist is what confirms the unique referent, '
+        'making this the case where Checklist alone is right.',
     's_8ff8e533fd171caad6d7':
-        '环境有 plastic / ceramic 共 6 种 plate，却没有 platter，且未说明用哪种盘子与份量，gold 为 NEEDS_CLARIFICATION。'
-        '仅 Zero-shot 判对，Few-shot 与 Checklist 判 CLEAR——本例是 Zero-shot 独占正确的代表，'
-        '说明策略分歧的方向并不单向。',
+        'The environment holds six plates (plastic and ceramic, dinner, bread and salad) but no platter, and neither '
+        'the plate type nor the quantity is stated, so gold is NEEDS_CLARIFICATION. Only Zero-shot is correct while '
+        'Few-shot and Checklist answer CLEAR, which shows the direction of disagreement is not one-sided.',
     's_af12a678f8b469a20963':
-        '环境有 plastic / ceramic / glass 三种 dinner plate，且不存在 dishwasher（只有 dish rack），'
-        '既是指代歧义也是不可执行指令，gold 为 NEEDS_CLARIFICATION。Zero-shot 判 CLEAR 属漏检，'
-        'Few-shot 与 Checklist 判对，与案例 12、13 一起说明本批五个分歧案例覆盖了三种策略各自独占正确的情形。',
+        'The environment holds plastic, ceramic and glass dinner plates and no dishwasher (only a dish rack), so the '
+        'instruction is both referentially ambiguous and unexecutable, and gold is NEEDS_CLARIFICATION. Zero-shot '
+        'answers CLEAR, a false negative, while Few-shot and Checklist are correct. Together with cases 12 and 13 '
+        'this means the five disagreement cases cover each strategy being the only correct one.',
 }
 
-CASE_TYPES = [('success', '成功案例', 5), ('error', '典型错误', 5), ('split', '策略分歧', 5)]
+OBSERVATIONS = [
+    'Gold and the model apply different criteria. Gold asks whether the instruction text is self-contained; the '
+    'model asks whether the scene can execute it. In cases 6, 7 and 8, all labelled CLEAR, the sink and the oven '
+    'mentioned by the instruction are absent from the environment, so all three strategies request clarification. '
+    'This single gap explains why unnecessary clarification sits at 0.45 to 0.66, and it shows the labels need '
+    'manual review rather than being treated as absolute truth.',
+    'The model is strong on referential uniqueness and weak on process executability. Cases 4 (three chocolate '
+    'tablets) and 15 (three dinner plates, no dishwasher) are flagged as ambiguous by at least two strategies, '
+    'while cases 9 (missing quantity and heat level) and 10 ("until done") are answered CLEAR by most strategies. '
+    'A missing object gets detected; a missing process parameter does not.',
+    'Each strategy is the only correct one in at least one case. Few-shot alone is right in case 12, Checklist '
+    'alone in case 13 and Zero-shot alone in case 14. The difference comes from what each prompt inspects rather '
+    'than from one strategy dominating: Few-shot is conservative, Checklist relies on structured checks and '
+    'Zero-shot is lenient, consistent with overall Accuracy differing by only 0.5 to 2.5 percentage points.',
+    'All 15 cases predict identically in both rounds, above the overall 97.67 percent round-to-round agreement '
+    '(Zero-shot 100, Few-shot 95.5, Checklist 97.5). These cases are therefore stable judgement tendencies rather '
+    'than sampling noise, which makes them usable as qualitative evidence.',
+]
+
+HEADINGS = {'success': '5.1 Success cases', 'error': '5.2 Typical errors', 'split': '5.3 Strategy splits'}
 
 
 def load_predictions(path):
@@ -203,9 +238,7 @@ def select(entries):
     if len(split_cases) < 5:
         split_cases += pick(split, 5 - len(split_cases))
 
-    return [(('success', '成功案例'), success_cases),
-            (('error', '典型错误'), error_cases),
-            (('split', '策略分歧'), split_cases)]
+    return [('success', success_cases), ('error', error_cases), ('split', split_cases)]
 
 
 def write_csv(rows, path):
@@ -220,45 +253,32 @@ def write_csv(rows, path):
         writer.writerows(rows)
 
 
-OBSERVATIONS = [
-    '**gold 口径与模型口径不同**：gold 以"指令文本是否自足"为准，模型以"环境能否执行"为准。案例 6、7、8 三条 gold 为 CLEAR 的样本，'
-    '指令提到的 sink、oven 都不在环境清单里，因此三种策略一致索要澄清。这一条同时解释了多余澄清率为何处在 0.45–0.66，'
-    '也说明 gold 标签需要人工复核，不能当作绝对真值。',
-    '**模型强于"指代唯一性"，弱于"过程可执行性"**：案例 4（三种 chocolate tablet）与案例 15（三种 dinner plate 且无 dishwasher）'
-    '都被至少两种策略识别为歧义；而案例 9（缺用量与火候）、案例 10（until done）却被多数策略判为 CLEAR。'
-    '也就是说，缺对象能发现，缺过程参数发现不了。',
-    '**三种策略各自都有独占正确的情形**：案例 12 仅 Few-shot 判对、案例 13 仅 Checklist 判对、案例 14 仅 Zero-shot 判对。'
-    '差异来自判断依据不同——Few-shot 偏保守、Checklist 依赖结构检查、Zero-shot 偏宽松——而不是某一策略全面更优，'
-    '这与总体 Accuracy 只相差 0.5–2.5 个百分点一致。',
-    '**15 例在两轮执行中预测完全一致**，高于总体 97.67% 的两轮一致率（Zero-shot 100%、Few-shot 95.5%、Checklist 97.5%），'
-    '说明这些案例不是随机波动的产物，而是稳定的判断倾向，适合作为定性证据引用。',
-]
-
-
 def write_md(rows, path):
-    lines = ['# Group 13 — 15 个案例分析（WANG HONGFENG）', '',
-             '数据来源：R1 / R2 两轮冻结预测（各 200 条 × 3 策略），标签来自 `data/processed/test_labels.csv`，',
-             '指令与环境来自 `data/processed/test_inputs.csv`；评分口径与 `src/evaluate.py` 一致。',
-             '选取规则由 `scripts/select_cases.py` 固定：按 sample_id 排序取首个匹配，15 例互不重复、'
-             '分属 15 个不同的指令对，每条都可在 `predictions.jsonl` 中按 sample_id 定位。', '']
+    lines = ['# Group 13 - 15 Case Analysis (WANG HONGFENG)', '',
+             'Sources: the two frozen prediction runs R1 and R2 (200 instructions x 3 strategies each), labels from '
+             '`data/processed/test_labels.csv`, environment and instruction text from `data/processed/test_inputs.csv`.',
+             'Scoring follows `src/evaluate.py`. Selection is fixed by `scripts/select_cases.py`: entries are sorted by '
+             'sample_id and the first match wins, the 15 cases use 15 distinct sample_ids and 15 distinct instruction '
+             'pairs, and every case can be located in `predictions.jsonl` by its sample_id.', '']
     current = None
     for row in rows:
-        label = {'success': '5.1 成功案例', 'error': '5.2 典型错误', 'split': '5.3 策略分歧'}[row['case_type']]
-        if label != current:
-            current = label
-            lines += [f'## {label}', '']
-        lines += [f"### 案例 {row['case_no']}　`{row['sample_id']}`", '',
-                  f"- **指令对**：{row['pair_id']}　**类别**：{row['category']}　**正确标签**：{row['gold_label']}",
-                  f"- **环境**：{row['environment']}",
-                  f"- **指令**：{row['instruction']}",
-                  '- **三种策略原始回答（R1 / R2 两轮一致）**：',
-                  f"  - Zero-shot：`{row['R1_zero_shot']}` / `{row['R2_zero_shot']}`",
-                  f"  - Few-shot：`{row['R1_few_shot']}` / `{row['R2_few_shot']}`",
-                  f"  - Checklist：`{row['R1_checklist']}` / `{row['R2_checklist']}`",
-                  f"- **人工分析**：{row['analysis']}", '']
-    lines += ['## 5.4 跨案例观察', '']
+        heading = HEADINGS[row['case_type']]
+        if heading != current:
+            current = heading
+            lines += [f'## {heading}', '']
+        lines += [f"### Case {row['case_no']} - `{row['sample_id']}`", '',
+                  f"- **Pair**: {row['pair_id']} | **Category**: {row['category']} | **Gold label**: {row['gold_label']}",
+                  f"- **Environment**: {row['environment']}",
+                  f"- **Instruction**: {row['instruction']}",
+                  '- **Raw answers, identical in R1 and R2**:',
+                  f"  - Zero-shot: `{row['R1_zero_shot']}` / `{row['R2_zero_shot']}`",
+                  f"  - Few-shot: `{row['R1_few_shot']}` / `{row['R2_few_shot']}`",
+                  f"  - Checklist: `{row['R1_checklist']}` / `{row['R2_checklist']}`",
+                  f"- **Reading**: {row['analysis']}", '']
+    lines += ['## 5.4 Observations across the 15 cases', '']
     lines += [f'{index}. {text}' for index, text in enumerate(OBSERVATIONS, start=1)]
-    lines += ['', '以上 15 例的数量分布为 5 成功 / 5 典型错误 / 5 策略分歧，满足手册要求，未出现需要缩量说明的情形。']
+    lines += ['', 'The 15 cases split 5 success / 5 typical error / 5 strategy split, which meets the handbook '
+                  'requirement without any shortfall to declare.']
     path.write_text('\n'.join(lines), encoding='utf-8')
 
 
@@ -268,7 +288,7 @@ def main():
     groups = select(entries)
 
     rows, case_no = [], 0
-    for (case_type, _), group in groups:
+    for case_type, group in groups:
         for entry in group:
             if entry['sample_id'] not in NOTES:
                 raise SystemExit(f'missing hand-written note for {entry["sample_id"]}')
@@ -291,7 +311,7 @@ def main():
 
     print(f'cases: {len(rows)}  unique sample_id: {len({r["sample_id"] for r in rows})}'
           f'  unique pairs: {len({r["pair_id"] for r in rows})}')
-    for (case_type, _), group in groups:
+    for case_type, group in groups:
         print(f'  {case_type}: {len(group)} -> ' + ', '.join(e['sample_id'] for e in group))
     print(f'outputs -> {OUT_DIR}')
 
