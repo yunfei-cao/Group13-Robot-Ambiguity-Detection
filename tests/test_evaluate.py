@@ -1,8 +1,3 @@
-These tests pin the rules that every number in the report has to be
-reproducible against: strip-only label matching, INVALID versus
-REQUEST_FAILED, the six metric denominators, and the four manual-check
-samples printed on page 6 of the group handbook.
-"""
 import csv
 import json
 from pathlib import Path
