@@ -1,0 +1,38 @@
+[
+  {
+    "sample_id": "s_656a0b46bab6b8cfd282",
+    "pair_id": "dev_0",
+    "environment": "a knife block, a chair, a glass milk bottle, an oat milk bottle, canned olives, a glass, a bowl",
+    "instruction": "Use the glass milk bottle to pour milk into a glass.",
+    "gold_label": "CLEAR",
+    "category": "preferences",
+    "selection_reason": "明确指定玻璃奶瓶和玻璃杯。"
+  },
+  {
+    "sample_id": "s_d17d0ae39b74d48edeaa",
+    "pair_id": "dev_8",
+    "environment": "a spatula, a potholder, sliced whole wheat bread, uncut white bread, toasted bread, mixed fruit jam, canned olives",
+    "instruction": "Robot, please use the spatula to spread a layer of mixed fruit jam on top of a slice of bread.",
+    "gold_label": "NEEDS_CLARIFICATION",
+    "category": "preferences",
+    "selection_reason": "环境中有多种面包，指令未指定选哪一种。"
+  },
+  {
+    "sample_id": "s_6092d6ba91d198fb32f0",
+    "pair_id": "dev_63",
+    "environment": "a ceramic dinner plate, a ceramic bread plate, a ceramic salad plate, paper towels, an energy bar, olive oil, coconut oil, toasted bread, sliced whole wheat bread, muesli, cornflakes",
+    "instruction": "Robot, please arrange the sliced whole wheat bread on a ceramic bread plate.",
+    "gold_label": "CLEAR",
+    "category": "common_sense_knowledge",
+    "selection_reason": "明确指定全麦切片面包和陶瓷面包盘。"
+  },
+  {
+    "sample_id": "s_3cddb181dd0a9be3f5f9",
+    "pair_id": "dev_36",
+    "environment": "a spatula, a plastic dinner plate, a plastic bread plate, a plastic salad plate, a ceramic dinner plate, a ceramic bread plate, a ceramic salad plate, a glass dinner plate, a glass bread plate, a glass salad plate, a grater, rice chips, potato chips",
+    "instruction": "Place a plate on the kitchen table.",
+    "gold_label": "NEEDS_CLARIFICATION",
+    "category": "preferences",
+    "selection_reason": "环境中有多种盘子，指令未指定使用哪一个。"
+  }
+]

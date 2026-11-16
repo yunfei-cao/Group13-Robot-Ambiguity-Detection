@@ -1,0 +1,7 @@
+﻿round,strategy,tn,fp,fn,tp,failed_clear,failed_needs,clear_recall,needs_recall,ambiguity_miss_rate,unnecessary_clarification_rate
+R1,zero_shot,53,47,46,54,0,0,0.53,0.54,0.46,0.47
+R1,few_shot,33,66,21,79,1,0,0.33,0.79,0.21,0.66
+R1,checklist,55,45,44,56,0,0,0.55,0.56,0.44,0.45
+R2,zero_shot,53,47,46,54,0,0,0.53,0.54,0.46,0.47
+R2,few_shot,34,66,24,76,0,0,0.34,0.76,0.24,0.66
+R2,checklist,54,46,46,54,0,0,0.54,0.54,0.46,0.46

@@ -1,0 +1,50 @@
+{
+  "verified_at": "2026-11-11T09:41:58.039601+00:00",
+  "run_id": "group13-full-pilot-qwen200-20261111T090248Z-76877106",
+  "unit_tests_passed": 97,
+  "recovery_tests_passed": 19,
+  "offline_simulation": {
+    "temporary_directory": true,
+    "fake_responses": true,
+    "network_and_api_transport_blocked": true,
+    "simulated_new_calls": 568,
+    "simulated_final_predictions": 600,
+    "simulated_valid_predictions": 599,
+    "historical_failed_few_shot_retried": false,
+    "new_three_failures_latch": true,
+    "unauthorized_api_calls": 0
+  },
+  "historical_journals": {
+    "attempts.jsonl": {
+      "bytes": 50298,
+      "sha256": "a68ff4b1ea7e731f2b53bd0d8a1df88079e77be821809ffa4da58b19cc818318",
+      "unchanged": true
+    },
+    "predictions.jsonl": {
+      "bytes": 19233,
+      "sha256": "0384185f3c01b3b8d09f0afdbc4f1cdd9662e9bf6082225dd7d0442f38afd81e",
+      "unchanged": true
+    },
+    "execution_summaries.jsonl": {
+      "bytes": 1235,
+      "sha256": "71eabe41dbe6516f14355f75991c46b3e696107417bbb42f9ee8e70919cfd056",
+      "unchanged": true
+    }
+  },
+  "snapshot_hashes_match": true,
+  "current_check": {
+    "run_id": "group13-full-pilot-qwen200-20261111T090248Z-76877106",
+    "final_predictions": 32,
+    "valid_predictions": 31,
+    "remaining_logical_requests": 568,
+    "reviewed_completions": 45,
+    "known_total_tokens": 12934,
+    "total_token_stop": 300000,
+    "stopped_reason": null,
+    "execution_requires": "--resume-after-reviewed-stop",
+    "real_api_calls": 0
+  },
+  "real_api_calls": 0,
+  "actual_remaining_jobs_executed": 0,
+  "recovery_execution_event_created": false
+}

@@ -1,0 +1,17 @@
+{
+  "status": "OFFLINE_CHECKS_PASSED_NO_MODEL_RUN",
+  "prepared_jobs_per_version": 60,
+  "development_samples_checked": 170,
+  "verified": [
+    "perfect predictions",
+    "constant class baseline",
+    "invalid output handling",
+    "same-label pair metric",
+    "missing prediction rejection",
+    "duplicate rejection",
+    "version mismatch rejection",
+    "example hash mismatch rejection",
+    "request has no current sample label",
+    "source files unchanged"
+  ]
+}

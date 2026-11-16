@@ -1,0 +1,91 @@
+﻿figure,strategy,subgroup,metric,value
+01_accuracy,zero_shot,all_85_pairs,accuracy,0.5764705882352941
+01_accuracy,few_shot,all_85_pairs,accuracy,0.5647058823529412
+01_accuracy,checklist,all_85_pairs,accuracy,0.5705882352941176
+02_macro_f1,zero_shot,all_85_pairs,macro_f1,0.576235978396344
+02_macro_f1,few_shot,all_85_pairs,macro_f1,0.5646456256921373
+02_macro_f1,checklist,all_85_pairs,macro_f1,0.5693813109406989
+03_per_class,zero_shot,CLEAR,precision_clear,0.5730337078651685
+03_per_class,zero_shot,CLEAR,recall_clear,0.6
+03_per_class,zero_shot,CLEAR,f1_clear,0.5862068965517241
+03_per_class,few_shot,CLEAR,precision_clear,0.5662650602409639
+03_per_class,few_shot,CLEAR,recall_clear,0.5529411764705883
+03_per_class,few_shot,CLEAR,f1_clear,0.5595238095238095
+03_per_class,checklist,CLEAR,precision_clear,0.5638297872340425
+03_per_class,checklist,CLEAR,recall_clear,0.6235294117647059
+03_per_class,checklist,CLEAR,f1_clear,0.5921787709497207
+03_per_class,zero_shot,NEEDS_CLARIFICATION,precision,0.5802469135802469
+03_per_class,zero_shot,NEEDS_CLARIFICATION,recall,0.5529411764705883
+03_per_class,zero_shot,NEEDS_CLARIFICATION,f1_needs_clarification,0.5662650602409639
+03_per_class,few_shot,NEEDS_CLARIFICATION,precision,0.5632183908045977
+03_per_class,few_shot,NEEDS_CLARIFICATION,recall,0.5764705882352941
+03_per_class,few_shot,NEEDS_CLARIFICATION,f1_needs_clarification,0.5697674418604651
+03_per_class,checklist,NEEDS_CLARIFICATION,precision,0.5789473684210527
+03_per_class,checklist,NEEDS_CLARIFICATION,recall,0.5176470588235295
+03_per_class,checklist,NEEDS_CLARIFICATION,f1_needs_clarification,0.546583850931677
+04_confusion_matrices,zero_shot,all_85_pairs,cell_0_0,51
+04_confusion_matrices,zero_shot,all_85_pairs,cell_0_1,34
+04_confusion_matrices,zero_shot,all_85_pairs,cell_1_0,38
+04_confusion_matrices,zero_shot,all_85_pairs,cell_1_1,47
+04_confusion_matrices,few_shot,all_85_pairs,cell_0_0,47
+04_confusion_matrices,few_shot,all_85_pairs,cell_0_1,38
+04_confusion_matrices,few_shot,all_85_pairs,cell_1_0,36
+04_confusion_matrices,few_shot,all_85_pairs,cell_1_1,49
+04_confusion_matrices,checklist,all_85_pairs,cell_0_0,53
+04_confusion_matrices,checklist,all_85_pairs,cell_0_1,32
+04_confusion_matrices,checklist,all_85_pairs,cell_1_0,41
+04_confusion_matrices,checklist,all_85_pairs,cell_1_1,44
+05_pair_accuracy,zero_shot,all_85_pairs,pair_accuracy,0.18823529411764706
+05_pair_accuracy,few_shot,all_85_pairs,pair_accuracy,0.17647058823529413
+05_pair_accuracy,checklist,all_85_pairs,pair_accuracy,0.2
+06_pair_composition,zero_shot,all_85_pairs,Both correct,16
+06_pair_composition,few_shot,all_85_pairs,Both correct,15
+06_pair_composition,checklist,all_85_pairs,Both correct,17
+06_pair_composition,zero_shot,all_85_pairs,One correct,66
+06_pair_composition,few_shot,all_85_pairs,One correct,66
+06_pair_composition,checklist,all_85_pairs,One correct,63
+06_pair_composition,zero_shot,all_85_pairs,Neither correct,3
+06_pair_composition,few_shot,all_85_pairs,Neither correct,4
+06_pair_composition,checklist,all_85_pairs,Neither correct,5
+07_history,zero_shot,historical_9_pairs,accuracy,0.6666666666666666
+07_history,few_shot,historical_9_pairs,accuracy,0.6111111111111112
+07_history,checklist,historical_9_pairs,accuracy,0.7222222222222222
+07_history,zero_shot,previously_unused_76_pairs,accuracy,0.5657894736842105
+07_history,few_shot,previously_unused_76_pairs,accuracy,0.5592105263157895
+07_history,checklist,previously_unused_76_pairs,accuracy,0.5526315789473685
+07_history,zero_shot,historical_9_pairs,macro_f1,0.6625
+07_history,few_shot,historical_9_pairs,macro_f1,0.609907120743034
+07_history,checklist,historical_9_pairs,macro_f1,0.7213622291021672
+07_history,zero_shot,previously_unused_76_pairs,macro_f1,0.5651118432460551
+07_history,few_shot,previously_unused_76_pairs,macro_f1,0.5591914469982253
+07_history,checklist,previously_unused_76_pairs,macro_f1,0.5506868370718137
+08_distribution,zero_shot,all_85_pairs,CLEAR,89
+08_distribution,few_shot,all_85_pairs,CLEAR,83
+08_distribution,checklist,all_85_pairs,CLEAR,94
+08_distribution,zero_shot,all_85_pairs,NEEDS_CLARIFICATION,81
+08_distribution,few_shot,all_85_pairs,NEEDS_CLARIFICATION,87
+08_distribution,checklist,all_85_pairs,NEEDS_CLARIFICATION,76
+09_case_outcomes,zero_shot,dev_10,correct_members,1
+09_case_outcomes,zero_shot,dev_26,correct_members,2
+09_case_outcomes,zero_shot,dev_33,correct_members,2
+09_case_outcomes,zero_shot,dev_53,correct_members,1
+09_case_outcomes,few_shot,dev_10,correct_members,1
+09_case_outcomes,few_shot,dev_26,correct_members,1
+09_case_outcomes,few_shot,dev_33,correct_members,2
+09_case_outcomes,few_shot,dev_53,correct_members,2
+09_case_outcomes,checklist,dev_10,correct_members,2
+09_case_outcomes,checklist,dev_26,correct_members,1
+09_case_outcomes,checklist,dev_33,correct_members,1
+09_case_outcomes,checklist,dev_53,correct_members,2
+10_tokens,zero_shot,all_85_pairs,prompt_tokens,88979
+10_tokens,few_shot,all_85_pairs,prompt_tokens,145419
+10_tokens,checklist,all_85_pairs,prompt_tokens,112949
+10_tokens,zero_shot,all_85_pairs,completion_tokens,575
+10_tokens,few_shot,all_85_pairs,completion_tokens,605
+10_tokens,checklist,all_85_pairs,completion_tokens,550
+11_reliability,zero_shot,all_85_pairs,failed_attempts,4
+11_reliability,zero_shot,all_85_pairs,mean_latency_ms,2429.7130666661474
+11_reliability,few_shot,all_85_pairs,failed_attempts,4
+11_reliability,few_shot,all_85_pairs,mean_latency_ms,2549.458896552765
+11_reliability,checklist,all_85_pairs,failed_attempts,3
+11_reliability,checklist,all_85_pairs,mean_latency_ms,2137.250315027703

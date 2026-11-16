@@ -1,0 +1,51 @@
+{
+  "prompts.py": {
+    "raw_sha256": "cd6ca99652ed6c010cb6cf8a1d511e35d547e8276220c449dcdc3135d5325e9a",
+    "lf_sha256": "5e7866fb9accb9143344e21f3c8054867f46c3a29d4b549941dedbb18d352167",
+    "expected_lf_sha256": "5e7866fb9accb9143344e21f3c8054867f46c3a29d4b549941dedbb18d352167",
+    "crlf_count": 250,
+    "normalization": "CRLF -> LF only"
+  },
+  "prompts/prompt_manifest.json": {
+    "raw_sha256": "897b8f00aedf013377baccaadd097290c3e17a7b0dc90981ebde609db90a2178",
+    "lf_sha256": "1e4db3fc47f3979dda3d2a6b7f204dcbab6516858558eb3aa8af00668762fab9",
+    "expected_lf_sha256": "1e4db3fc47f3979dda3d2a6b7f204dcbab6516858558eb3aa8af00668762fab9",
+    "crlf_count": 42,
+    "normalization": "CRLF -> LF only"
+  },
+  "prompts/zero_shot.txt": {
+    "raw_sha256": "e63271127cf786f88f9404278404511bc238d67d869c0048af329d2e522ccbe8",
+    "lf_sha256": "80346d7c1878a1efc504733333096bb06fa4e34b56d3d44e51b08b197bcedff3",
+    "expected_lf_sha256": "80346d7c1878a1efc504733333096bb06fa4e34b56d3d44e51b08b197bcedff3",
+    "crlf_count": 12,
+    "normalization": "CRLF -> LF only"
+  },
+  "prompts/few_shot.txt": {
+    "raw_sha256": "06f4be08db7b14f908337570d58269d1ab30f4bcf1948d7c8080fd02f3270dc0",
+    "lf_sha256": "1e3eb40be31720f3207afdc92e7c85843a28edf9be966f0039c06538aad48179",
+    "expected_lf_sha256": "1e3eb40be31720f3207afdc92e7c85843a28edf9be966f0039c06538aad48179",
+    "crlf_count": 38,
+    "normalization": "CRLF -> LF only"
+  },
+  "prompts/checklist.txt": {
+    "raw_sha256": "0cddb63aa2889f869df6b5bfc7140b2debfb5a530a146aa9a5668f066f5ce3ee",
+    "lf_sha256": "66ec4e21c7f1eb4b89da2c314136dcf58f784503c53d19febc3d44d0d18abdea",
+    "expected_lf_sha256": "66ec4e21c7f1eb4b89da2c314136dcf58f784503c53d19febc3d44d0d18abdea",
+    "crlf_count": 23,
+    "normalization": "CRLF -> LF only"
+  },
+  "prompts/few_shot_examples.json": {
+    "raw_sha256": "d3c9c35d475053789696e82fe96d0a30cc736747a4d6db78bd4de1a81f1e7390",
+    "lf_sha256": "515174a013117ceef4912608aa413be94d785f681ec049e9c30a8883d5afa40b",
+    "expected_lf_sha256": "515174a013117ceef4912608aa413be94d785f681ec049e9c30a8883d5afa40b",
+    "crlf_count": 38,
+    "normalization": "CRLF -> LF only"
+  },
+  "prompts/preview_messages.json": {
+    "raw_sha256": "f808bdfae4db54f6860de22eb8db538dda94bc722cd4f214486811f24d32ff8f",
+    "lf_sha256": "cd4da914b16623e7d1f52f5f5e6f0161db97c4b41108f9e818a7765590b70dfc",
+    "expected_lf_sha256": "cd4da914b16623e7d1f52f5f5e6f0161db97c4b41108f9e818a7765590b70dfc",
+    "crlf_count": 36,
+    "normalization": "CRLF -> LF only"
+  }
+}

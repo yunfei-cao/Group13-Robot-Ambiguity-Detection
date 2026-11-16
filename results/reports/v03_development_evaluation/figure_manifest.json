@@ -1,0 +1,57 @@
+[
+  {
+    "number": 1,
+    "name": "01_accuracy",
+    "title": "Instruction-level accuracy"
+  },
+  {
+    "number": 2,
+    "name": "02_macro_f1",
+    "title": "Macro-F1 across the two gold classes"
+  },
+  {
+    "number": 3,
+    "name": "03_per_class",
+    "title": "Precision, recall and F1 by class"
+  },
+  {
+    "number": 4,
+    "name": "04_confusion_matrices",
+    "title": "Confusion matrices for all 170 instructions"
+  },
+  {
+    "number": 5,
+    "name": "05_pair_accuracy",
+    "title": "Both instructions must be correct"
+  },
+  {
+    "number": 6,
+    "name": "06_pair_composition",
+    "title": "Pair correctness composition"
+  },
+  {
+    "number": 7,
+    "name": "07_history",
+    "title": "Historical use and previously unused development samples"
+  },
+  {
+    "number": 8,
+    "name": "08_distribution",
+    "title": "Predicted label distribution"
+  },
+  {
+    "number": 9,
+    "name": "09_case_outcomes",
+    "title": "Representative pair outcomes"
+  },
+  {
+    "number": 10,
+    "name": "10_tokens",
+    "title": "Known token usage by strategy and token type"
+  },
+  {
+    "number": 11,
+    "name": "11_reliability",
+    "title": "Attempt reliability and recorded latency"
+  }
+]

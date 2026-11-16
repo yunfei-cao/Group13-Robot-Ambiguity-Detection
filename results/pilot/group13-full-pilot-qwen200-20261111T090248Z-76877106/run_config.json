@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "run_id": "group13-full-pilot-qwen200-20261111T090248Z-76877106",
+  "split": "pilot",
+  "mode": "qwen",
+  "model": "qwen-plus-2025-12-01",
+  "temperature": 0.0,
+  "max_tokens": 64,
+  "timeout_seconds": 30,
+  "enable_thinking": false,
+  "stream": false,
+  "endpoint_sha256": "8b2745bf62ffc25c22839cae7ccd329991f2d07fcd4fd9e86858f97809f05c05",
+  "mock_response_sha256": "1f3becae69d661466b65c298e6ec2d61d2a52b6251aed643729fceff1d18bab3",
+  "prompt_version": "v0.1-dev",
+  "dataset_sha256": "83bc0ddb922c689f346fccc580221574b17fdf71dd7eeb9379fb234542d1f79b",
+  "strategies": [
+    "zero_shot",
+    "few_shot",
+    "checklist"
+  ],
+  "logical_requests": 600,
+  "prompts_sha256": "f37503d450b866eac8ed1e06e5f02ca12ecc342a09c3d67d17f13b358f0cf95c",
+  "retry_delays_seconds": [
+    2,
+    4
+  ],
+  "safety_policy": {
+    "max_prompt_tokens_per_attempt": 16000,
+    "max_completion_tokens_per_attempt": 64,
+    "total_token_stop": 300000,
+    "consecutive_unsuccessful_attempts": 3,
+    "rate_limit_errors": 3,
+    "stop_on_missing_usage": true
+  },
+  "max_logical_requests": 600,
+  "experiment_kind": "full_pilot_not_final",
+  "allow_draft_pilot": true,
+  "snapshot_sha256": "ed0334fddcb0f652441f744af80aef10632ffe13a8bf477f1f2df76f80816ec5",
+  "created_at": "2026-11-11T09:10:07.494843+00:00"
+}

@@ -1,0 +1,13 @@
+{
+  "run_id": "group13-dev-v01-v03-20261113T150521Z-b2a4a074-baseline",
+  "prompt_version": "v0.1-dev",
+  "instructions": 170,
+  "pairs": 85,
+  "logical_requests": 510,
+  "historical_pairs": 9,
+  "previously_unused_pairs": 76,
+  "all_assets_verified": true,
+  "windows_raw_and_lf_hashes_recorded": true,
+  "output_dir": "D:\\Group13-Robot-Ambiguity-Detection\\results\\prompt_comparison\\group13-dev-v01-v03-20261113T150521Z-b2a4a074\\baseline\\pilot\\group13-dev-v01-v03-20261113T150521Z-b2a4a074-baseline",
+  "real_api_calls": 0
+}

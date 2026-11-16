@@ -1,0 +1,52 @@
+{
+  "logical_id": "9f2c7b2d7194a7947eba7803725a407eaa776a167b9e5f81a28a4d36d71d63ff",
+  "events": [
+    {
+      "line_number": 33,
+      "logical_id": "9f2c7b2d7194a7947eba7803725a407eaa776a167b9e5f81a28a4d36d71d63ff",
+      "sample_id": "s_f07e8be2c8b536f86e35",
+      "strategy": "zero_shot",
+      "run_id": "group13-dev-qwen20-20261111T060727Z-d9300025",
+      "prompt_sha256": "12e3311c403ee4372372108278430022a3febd332bb58314db22c9d6ca66701a",
+      "event": "started",
+      "attempt_number": 1,
+      "retry_count": 0,
+      "timestamp": "2026-11-11T06:22:23.006679+00:00"
+    }
+  ],
+  "prediction": {
+    "logical_id": "9f2c7b2d7194a7947eba7803725a407eaa776a167b9e5f81a28a4d36d71d63ff",
+    "sample_id": "s_f07e8be2c8b536f86e35",
+    "strategy": "zero_shot",
+    "run_id": "group13-dev-qwen20-20261111T060727Z-d9300025",
+    "prompt_sha256": "12e3311c403ee4372372108278430022a3febd332bb58314db22c9d6ca66701a",
+    "status": "interrupted",
+    "label": null,
+    "is_valid": false,
+    "error": {
+      "code": "outcome_unknown",
+      "retryable": false
+    },
+    "attempts": 1,
+    "retry_count": 0,
+    "raw_text": "",
+    "token_usage": {},
+    "model_id": "qwen-plus-2025-12-01",
+    "latency_ms": null
+  },
+  "recoverable_from_attempts": false,
+  "provider_delivery_confirmed": false,
+  "provider_response_confirmed": false,
+  "resume_verification": {
+    "logical_requests": 60,
+    "final_predictions": 60,
+    "calls_this_run": 0,
+    "valid_predictions": 59,
+    "unresolved_logical_ids": [
+      "9f2c7b2d7194a7947eba7803725a407eaa776a167b9e5f81a28a4d36d71d63ff"
+    ],
+    "stopped_reason": null,
+    "remaining_logical_requests": 0
+  },
+  "note": "Provider usage confirmed by user globally; no per-request acknowledgement for this logical ID."
+}

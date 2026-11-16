@@ -1,0 +1,25 @@
+{
+  "numeric_reconciliation": "PASS",
+  "sample_coverage": "170 unique per strategy; 510 valid; no missing or duplicate",
+  "editable_word_tables": 19,
+  "inline_chart_figures": 11,
+  "chart_png": 14,
+  "chart_svg": 14,
+  "source_integrity": "PASS",
+  "rendering": {
+    "renderer": "Microsoft Word native PDF export; PyMuPDF page rasterization",
+    "pages": 16,
+    "word_open_and_export": true,
+    "canonical_renderer_returncode": 1
+  },
+  "visual_review": "All 16 full-size final page images inspected; no overlap, clipping, blank page or malformed text found",
+  "pdf_pages": 16,
+  "all_pages_a4": true,
+  "all_pages_nonblank": true,
+  "numeric_pdf_checks": "Accuracy, Macro-F1, Recall and Pair Accuracy matched for all strategies",
+  "chart_data_crosscheck": "PASS; figure_source_data.csv from recomputed records",
+  "table_numbering": "1 through 19 sequential",
+  "figure_numbering": "1 through 11 sequential",
+  "document_editable": true,
+  "reference_typography_and_page_geometry": "PASS"
+}

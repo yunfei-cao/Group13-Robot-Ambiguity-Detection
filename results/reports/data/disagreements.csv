@@ -1,0 +1,15 @@
+﻿sample_id,strategy,pair_id,category,gold_label,round1_prediction,round2_prediction,both_valid,same_valid_label,label_flip,validity_change,correct_to_wrong,wrong_to_correct
+s_9c65df4c253e6019484e,few_shot,test_141,preferences,CLEAR,REQUEST_FAILED,NEEDS_CLARIFICATION,False,False,False,True,False,False
+s_f37b3f728c5bb57a0411,few_shot,test_17,preferences,CLEAR,NEEDS_CLARIFICATION,CLEAR,True,False,True,False,False,True
+s_d0c79f390eed72de95ee,few_shot,test_17,preferences,NEEDS_CLARIFICATION,NEEDS_CLARIFICATION,CLEAR,True,False,True,False,True,False
+s_cce858824fe48ea92c3b,few_shot,test_197,preferences,NEEDS_CLARIFICATION,NEEDS_CLARIFICATION,CLEAR,True,False,True,False,True,False
+s_d578998879f01781f7ae,checklist,test_223,common_sense_knowledge,CLEAR,NEEDS_CLARIFICATION,CLEAR,True,False,True,False,False,True
+s_e1bc09f221b5668b4c93,checklist,test_258,safety,CLEAR,CLEAR,NEEDS_CLARIFICATION,True,False,True,False,True,False
+s_a0f8d81f56c4e263d1cc,few_shot,test_311,preferences,CLEAR,CLEAR,NEEDS_CLARIFICATION,True,False,True,False,True,False
+s_89e3795501f4c1e8d54b,few_shot,test_370,preferences,CLEAR,NEEDS_CLARIFICATION,CLEAR,True,False,True,False,False,True
+s_e89f7de438f576687c75,checklist,test_535,preferences,CLEAR,CLEAR,NEEDS_CLARIFICATION,True,False,True,False,True,False
+s_20032ae6b079f8f42ff3,few_shot,test_540,preferences,CLEAR,CLEAR,NEEDS_CLARIFICATION,True,False,True,False,True,False
+s_334501733209efd4d348,checklist,test_717,common_sense_knowledge,NEEDS_CLARIFICATION,NEEDS_CLARIFICATION,CLEAR,True,False,True,False,True,False
+s_903b0d96cba5719a5667,few_shot,test_719,common_sense_knowledge,CLEAR,NEEDS_CLARIFICATION,CLEAR,True,False,True,False,False,True
+s_28771356bc7a85cce9d8,checklist,test_73,common_sense_knowledge,NEEDS_CLARIFICATION,NEEDS_CLARIFICATION,CLEAR,True,False,True,False,True,False
+s_478eb7a6a64baf1b6a8d,few_shot,test_85,common_sense_knowledge,NEEDS_CLARIFICATION,NEEDS_CLARIFICATION,CLEAR,True,False,True,False,True,False

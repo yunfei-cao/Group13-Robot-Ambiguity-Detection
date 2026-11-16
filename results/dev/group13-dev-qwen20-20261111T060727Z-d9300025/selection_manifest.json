@@ -1,0 +1,127 @@
+{
+  "run_id": "group13-dev-qwen20-20261111T060727Z-d9300025",
+  "prepared_at": "2026-11-11T06:07:27.736803+00:00",
+  "status": "blocked_missing_process_api_key",
+  "api_key_present": false,
+  "source": "data\\processed\\dev_inputs.csv",
+  "sampling_rule": "First 10 eligible complete pairs in CSV first-occurrence order; preserve CSV row order. Exclude fixed example pair IDs once via set membership. Complete pair = 2 unique samples with same environment and distinct normalized instructions. No random sampling or label-based selection.",
+  "source_instructions": 184,
+  "source_pairs": 92,
+  "fixed_example_pair_ids": [
+    "dev_0",
+    "dev_36",
+    "dev_63",
+    "dev_8"
+  ],
+  "fixed_example_pairs_still_present_in_prepared_data": [
+    "dev_0",
+    "dev_36",
+    "dev_63",
+    "dev_8"
+  ],
+  "already_excluded_during_data_preparation": false,
+  "eligible_pairs": 88,
+  "selected_pair_ids": [
+    "dev_1",
+    "dev_10",
+    "dev_11",
+    "dev_12",
+    "dev_13",
+    "dev_15",
+    "dev_17",
+    "dev_18",
+    "dev_19",
+    "dev_2"
+  ],
+  "selected_sample_ids": [
+    "s_dbf04fdae931924abe12",
+    "s_25cb7d2980b9f08c0e71",
+    "s_0fb2caa81cb2e1d7b63a",
+    "s_156ff31261ac423769ae",
+    "s_7a49a671dfa28ea9fea4",
+    "s_f07e8be2c8b536f86e35",
+    "s_082e0c072a911950d4d3",
+    "s_056265b9bd186c26edf0",
+    "s_6196fa67049855e6e630",
+    "s_fa2e5bd260ca5f78a739",
+    "s_460d22c1660f22e35ee4",
+    "s_f10ef46c04d2ba58144e",
+    "s_2636744fed8500ce3765",
+    "s_bcfc1e9cba474d11c269",
+    "s_41ccd47fa0f4e39e5eec",
+    "s_53bfbc552bc4f7c59ff2",
+    "s_d88c7d60a457ada73753",
+    "s_3bf0387ed41b0d0119e9",
+    "s_e59984cca1d97a635edd",
+    "s_e2f07d7869745912a086"
+  ],
+  "selected_instructions": 20,
+  "logical_requests": 60,
+  "strategies": [
+    "zero_shot",
+    "few_shot",
+    "checklist"
+  ],
+  "formal_test_overlap_checks": {
+    "sample_id_overlap": [],
+    "pair_id_overlap": [],
+    "normalized_instruction_overlap": []
+  },
+  "formal_test_pair_list_overlap": [],
+  "prompt_version": "v0.1-dev",
+  "prompt_status": "DRAFT: development pilot pending",
+  "use_restriction": "Development only; DRAFT results must not be used as formal test conclusions.",
+  "dataset_sha256": "14b47f463965f3d03e2e81fa335e9d4c3944747b3553bb368b93d43c177f15b5",
+  "prompts_sha256": "d36a852ec850c61ae1d3e2014f415dfb9be086c94c30bf38b34e309b60f0b12b",
+  "enable_thinking": false,
+  "model_config": {
+    "mode": "qwen",
+    "model": "qwen-plus-2025-12-01",
+    "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+    "allow_real_requests": true,
+    "temperature": 0.0,
+    "max_tokens": 64,
+    "timeout_seconds": 30
+  },
+  "safety_policy": {
+    "enabled": true,
+    "permission_http_status": [
+      401,
+      403
+    ],
+    "consecutive_unsuccessful_attempts": 3,
+    "cumulative_429_errors": 3,
+    "max_prompt_tokens_per_attempt": 16000,
+    "max_completion_tokens_per_attempt": 64,
+    "max_total_tokens_per_attempt": 16064,
+    "cumulative_token_stop": 300000,
+    "stop_on_missing_or_invalid_usage": true
+  },
+  "retry_policy": {
+    "max_attempts_per_logical_request": 3,
+    "delays_seconds": [
+      2,
+      4
+    ],
+    "retryable_errors_only": true
+  },
+  "resume_enabled": true,
+  "offline_validation": "31 tests passed: tests.test_dev_safety and tests.test_run_experiment",
+  "command": "python -m src.run_experiment --input results/dev/group13-dev-qwen20-20261111T060727Z-d9300025/selected_inputs.csv --model-config results/dev/group13-dev-qwen20-20261111T060727Z-d9300025/model_config.json --real-api --split dev --run-id group13-dev-qwen20-20261111T060727Z-d9300025 --results-root results --builder src.prompt_adapter:official_prompt_builder --prompt-version v0.1-dev --stop-on-anomaly --max-logical-requests 60",
+  "file_sha256": {
+    "data/processed/dev_inputs.csv": "65585f5273e89ee2d39455eaa0a3b5240232eb4cc5a8cf22f96c05366dea1b68",
+    "data/processed/test_inputs.csv": "a24c8c407b886658573d014b9658f5b2ae09a0c7d94241f567b6a383adf7f5ae",
+    "data/processed/test_pair_ids.txt": "a6cc6ca6d911b7d7a87f751e1b0630336035437e35a7eb6afaafeaab34182f58",
+    "data/processed/data_manifest.json": "07ed33b1f85b29c7e6f1ab4ff02b9b3663ab857b69b5c6f41e6a929583d078a8",
+    "prompts/prompt_manifest.json": "c7d197701b654a4ddc7fb4b99b6da6b729656222574d50a6d928883bc7297243",
+    "prompts/few_shot_examples.json": "d3c9c35d475053789696e82fe96d0a30cc736747a4d6db78bd4de1a81f1e7390",
+    "src/run_experiment.py": "a9dc7bc4324b2e2b1ff338408758083c25ee70bc7529ea124d379063f26648ee",
+    "src/model_client.py": "1373cdaeee95d2c2421cd4445ef189b7d924df301268582076d8dd9f16b8edbf",
+    "src/prompt_adapter.py": "a05898b5a4c300aa674fc6da9970c7952e97a07ca845b5c925b52339e7fa8853",
+    "src/prompts.py": "ec67ea6c26dd91cdc531c56dfc6b3578787f5bf6d5e1fe9c95bccc85c2c9927c",
+    "prompts/zero_shot.txt": "e63271127cf786f88f9404278404511bc238d67d869c0048af329d2e522ccbe8",
+    "prompts/few_shot.txt": "06f4be08db7b14f908337570d58269d1ab30f4bcf1948d7c8080fd02f3270dc0",
+    "prompts/checklist.txt": "0cddb63aa2889f869df6b5bfc7140b2debfb5a530a146aa9a5668f066f5ce3ee"
+  },
+  "selected_csv_sha256": "98454e223a54dbcc7b62a7a7ce6b7bfba26d58552e52264b95462a4b1c1e2e90"
+}

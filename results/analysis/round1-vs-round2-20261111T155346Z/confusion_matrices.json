@@ -1,0 +1,642 @@
+{
+  "round1/zero_shot/all_jobs": {
+    "gold_rows": [
+      "CLEAR",
+      "NEEDS_CLARIFICATION"
+    ],
+    "prediction_columns": [
+      "CLEAR",
+      "NEEDS_CLARIFICATION",
+      "INVALID",
+      "REQUEST_FAILED"
+    ],
+    "counts": [
+      [
+        53,
+        47,
+        0,
+        0
+      ],
+      [
+        46,
+        54,
+        0,
+        0
+      ]
+    ],
+    "row_normalized": [
+      [
+        0.53,
+        0.47,
+        0.0,
+        0.0
+      ],
+      [
+        0.46,
+        0.54,
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "round1/zero_shot/valid_only": {
+    "gold_rows": [
+      "CLEAR",
+      "NEEDS_CLARIFICATION"
+    ],
+    "prediction_columns": [
+      "CLEAR",
+      "NEEDS_CLARIFICATION",
+      "INVALID",
+      "REQUEST_FAILED"
+    ],
+    "counts": [
+      [
+        53,
+        47,
+        0,
+        0
+      ],
+      [
+        46,
+        54,
+        0,
+        0
+      ]
+    ],
+    "row_normalized": [
+      [
+        0.53,
+        0.47,
+        0.0,
+        0.0
+      ],
+      [
+        0.46,
+        0.54,
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "round1/few_shot/all_jobs": {
+    "gold_rows": [
+      "CLEAR",
+      "NEEDS_CLARIFICATION"
+    ],
+    "prediction_columns": [
+      "CLEAR",
+      "NEEDS_CLARIFICATION",
+      "INVALID",
+      "REQUEST_FAILED"
+    ],
+    "counts": [
+      [
+        33,
+        66,
+        0,
+        1
+      ],
+      [
+        21,
+        79,
+        0,
+        0
+      ]
+    ],
+    "row_normalized": [
+      [
+        0.33,
+        0.66,
+        0.0,
+        0.01
+      ],
+      [
+        0.21,
+        0.79,
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "round1/few_shot/valid_only": {
+    "gold_rows": [
+      "CLEAR",
+      "NEEDS_CLARIFICATION"
+    ],
+    "prediction_columns": [
+      "CLEAR",
+      "NEEDS_CLARIFICATION",
+      "INVALID",
+      "REQUEST_FAILED"
+    ],
+    "counts": [
+      [
+        33,
+        66,
+        0,
+        0
+      ],
+      [
+        21,
+        79,
+        0,
+        0
+      ]
+    ],
+    "row_normalized": [
+      [
+        0.3333333333333333,
+        0.6666666666666666,
+        0.0,
+        0.0
+      ],
+      [
+        0.21,
+        0.79,
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "round1/checklist/all_jobs": {
+    "gold_rows": [
+      "CLEAR",
+      "NEEDS_CLARIFICATION"
+    ],
+    "prediction_columns": [
+      "CLEAR",
+      "NEEDS_CLARIFICATION",
+      "INVALID",
+      "REQUEST_FAILED"
+    ],
+    "counts": [
+      [
+        55,
+        45,
+        0,
+        0
+      ],
+      [
+        44,
+        56,
+        0,
+        0
+      ]
+    ],
+    "row_normalized": [
+      [
+        0.55,
+        0.45,
+        0.0,
+        0.0
+      ],
+      [
+        0.44,
+        0.56,
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "round1/checklist/valid_only": {
+    "gold_rows": [
+      "CLEAR",
+      "NEEDS_CLARIFICATION"
+    ],
+    "prediction_columns": [
+      "CLEAR",
+      "NEEDS_CLARIFICATION",
+      "INVALID",
+      "REQUEST_FAILED"
+    ],
+    "counts": [
+      [
+        55,
+        45,
+        0,
+        0
+      ],
+      [
+        44,
+        56,
+        0,
+        0
+      ]
+    ],
+    "row_normalized": [
+      [
+        0.55,
+        0.45,
+        0.0,
+        0.0
+      ],
+      [
+        0.44,
+        0.56,
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "round1/ALL/all_jobs": {
+    "gold_rows": [
+      "CLEAR",
+      "NEEDS_CLARIFICATION"
+    ],
+    "prediction_columns": [
+      "CLEAR",
+      "NEEDS_CLARIFICATION",
+      "INVALID",
+      "REQUEST_FAILED"
+    ],
+    "counts": [
+      [
+        141,
+        158,
+        0,
+        1
+      ],
+      [
+        111,
+        189,
+        0,
+        0
+      ]
+    ],
+    "row_normalized": [
+      [
+        0.47,
+        0.5266666666666666,
+        0.0,
+        0.0033333333333333335
+      ],
+      [
+        0.37,
+        0.63,
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "round1/ALL/valid_only": {
+    "gold_rows": [
+      "CLEAR",
+      "NEEDS_CLARIFICATION"
+    ],
+    "prediction_columns": [
+      "CLEAR",
+      "NEEDS_CLARIFICATION",
+      "INVALID",
+      "REQUEST_FAILED"
+    ],
+    "counts": [
+      [
+        141,
+        158,
+        0,
+        0
+      ],
+      [
+        111,
+        189,
+        0,
+        0
+      ]
+    ],
+    "row_normalized": [
+      [
+        0.47157190635451507,
+        0.5284280936454849,
+        0.0,
+        0.0
+      ],
+      [
+        0.37,
+        0.63,
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "round2/zero_shot/all_jobs": {
+    "gold_rows": [
+      "CLEAR",
+      "NEEDS_CLARIFICATION"
+    ],
+    "prediction_columns": [
+      "CLEAR",
+      "NEEDS_CLARIFICATION",
+      "INVALID",
+      "REQUEST_FAILED"
+    ],
+    "counts": [
+      [
+        53,
+        47,
+        0,
+        0
+      ],
+      [
+        46,
+        54,
+        0,
+        0
+      ]
+    ],
+    "row_normalized": [
+      [
+        0.53,
+        0.47,
+        0.0,
+        0.0
+      ],
+      [
+        0.46,
+        0.54,
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "round2/zero_shot/valid_only": {
+    "gold_rows": [
+      "CLEAR",
+      "NEEDS_CLARIFICATION"
+    ],
+    "prediction_columns": [
+      "CLEAR",
+      "NEEDS_CLARIFICATION",
+      "INVALID",
+      "REQUEST_FAILED"
+    ],
+    "counts": [
+      [
+        53,
+        47,
+        0,
+        0
+      ],
+      [
+        46,
+        54,
+        0,
+        0
+      ]
+    ],
+    "row_normalized": [
+      [
+        0.53,
+        0.47,
+        0.0,
+        0.0
+      ],
+      [
+        0.46,
+        0.54,
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "round2/few_shot/all_jobs": {
+    "gold_rows": [
+      "CLEAR",
+      "NEEDS_CLARIFICATION"
+    ],
+    "prediction_columns": [
+      "CLEAR",
+      "NEEDS_CLARIFICATION",
+      "INVALID",
+      "REQUEST_FAILED"
+    ],
+    "counts": [
+      [
+        34,
+        66,
+        0,
+        0
+      ],
+      [
+        24,
+        76,
+        0,
+        0
+      ]
+    ],
+    "row_normalized": [
+      [
+        0.34,
+        0.66,
+        0.0,
+        0.0
+      ],
+      [
+        0.24,
+        0.76,
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "round2/few_shot/valid_only": {
+    "gold_rows": [
+      "CLEAR",
+      "NEEDS_CLARIFICATION"
+    ],
+    "prediction_columns": [
+      "CLEAR",
+      "NEEDS_CLARIFICATION",
+      "INVALID",
+      "REQUEST_FAILED"
+    ],
+    "counts": [
+      [
+        34,
+        66,
+        0,
+        0
+      ],
+      [
+        24,
+        76,
+        0,
+        0
+      ]
+    ],
+    "row_normalized": [
+      [
+        0.34,
+        0.66,
+        0.0,
+        0.0
+      ],
+      [
+        0.24,
+        0.76,
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "round2/checklist/all_jobs": {
+    "gold_rows": [
+      "CLEAR",
+      "NEEDS_CLARIFICATION"
+    ],
+    "prediction_columns": [
+      "CLEAR",
+      "NEEDS_CLARIFICATION",
+      "INVALID",
+      "REQUEST_FAILED"
+    ],
+    "counts": [
+      [
+        54,
+        46,
+        0,
+        0
+      ],
+      [
+        46,
+        54,
+        0,
+        0
+      ]
+    ],
+    "row_normalized": [
+      [
+        0.54,
+        0.46,
+        0.0,
+        0.0
+      ],
+      [
+        0.46,
+        0.54,
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "round2/checklist/valid_only": {
+    "gold_rows": [
+      "CLEAR",
+      "NEEDS_CLARIFICATION"
+    ],
+    "prediction_columns": [
+      "CLEAR",
+      "NEEDS_CLARIFICATION",
+      "INVALID",
+      "REQUEST_FAILED"
+    ],
+    "counts": [
+      [
+        54,
+        46,
+        0,
+        0
+      ],
+      [
+        46,
+        54,
+        0,
+        0
+      ]
+    ],
+    "row_normalized": [
+      [
+        0.54,
+        0.46,
+        0.0,
+        0.0
+      ],
+      [
+        0.46,
+        0.54,
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "round2/ALL/all_jobs": {
+    "gold_rows": [
+      "CLEAR",
+      "NEEDS_CLARIFICATION"
+    ],
+    "prediction_columns": [
+      "CLEAR",
+      "NEEDS_CLARIFICATION",
+      "INVALID",
+      "REQUEST_FAILED"
+    ],
+    "counts": [
+      [
+        141,
+        159,
+        0,
+        0
+      ],
+      [
+        116,
+        184,
+        0,
+        0
+      ]
+    ],
+    "row_normalized": [
+      [
+        0.47,
+        0.53,
+        0.0,
+        0.0
+      ],
+      [
+        0.38666666666666666,
+        0.6133333333333333,
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "round2/ALL/valid_only": {
+    "gold_rows": [
+      "CLEAR",
+      "NEEDS_CLARIFICATION"
+    ],
+    "prediction_columns": [
+      "CLEAR",
+      "NEEDS_CLARIFICATION",
+      "INVALID",
+      "REQUEST_FAILED"
+    ],
+    "counts": [
+      [
+        141,
+        159,
+        0,
+        0
+      ],
+      [
+        116,
+        184,
+        0,
+        0
+      ]
+    ],
+    "row_normalized": [
+      [
+        0.47,
+        0.53,
+        0.0,
+        0.0
+      ],
+      [
+        0.38666666666666666,
+        0.6133333333333333,
+        0.0,
+        0.0
+      ]
+    ]
+  }
+}

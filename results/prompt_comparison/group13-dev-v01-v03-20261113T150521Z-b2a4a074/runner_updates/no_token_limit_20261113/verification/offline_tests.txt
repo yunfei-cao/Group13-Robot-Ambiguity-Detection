@@ -1,0 +1,265 @@
+test_logical_budget_blocks_before_calls (test_dev_safety.DevelopmentSafetyTests.test_logical_budget_blocks_before_calls) ... ok
+test_permission_error_stops_and_resume_sends_nothing (test_dev_safety.DevelopmentSafetyTests.test_permission_error_stops_and_resume_sends_nothing) ... ok
+test_three_rate_limits_stop_before_fourth_call (test_dev_safety.DevelopmentSafetyTests.test_three_rate_limits_stop_before_fourth_call) ... ok
+test_usage_and_failure_thresholds (test_dev_safety.DevelopmentSafetyTests.test_usage_and_failure_thresholds) ... ok
+test_duplicate_prediction_is_rejected (test_evaluation_adapter.EvaluationAdapterTests.test_duplicate_prediction_is_rejected) ... ok
+test_missing_strategy_is_rejected (test_evaluation_adapter.EvaluationAdapterTests.test_missing_strategy_is_rejected) ... ok
+test_mixed_runs_are_rejected (test_evaluation_adapter.EvaluationAdapterTests.test_mixed_runs_are_rejected) ... ok
+test_unknown_status_and_legacy_output_are_rejected (test_evaluation_adapter.EvaluationAdapterTests.test_unknown_status_and_legacy_output_are_rejected) ... ok
+test_budget_extension_cannot_change_other_settings (test_full_pilot.FullPilotTests.test_budget_extension_cannot_change_other_settings) ... ok
+test_budget_extension_cannot_clear_permission_stop (test_full_pilot.FullPilotTests.test_budget_extension_cannot_clear_permission_stop) ... ok
+test_budget_extension_rejects_first_run_equal_or_lower_limit (test_full_pilot.FullPilotTests.test_budget_extension_rejects_first_run_equal_or_lower_limit) ... ok
+test_budget_stop_resume_extension_does_not_repeat_completed_jobs (test_full_pilot.FullPilotTests.test_budget_stop_resume_extension_does_not_repeat_completed_jobs) ... ok
+test_formal_draft_rejected_without_pilot_options (test_full_pilot.FullPilotTests.test_formal_draft_rejected_without_pilot_options) ... ok
+test_no_limit_historical_permission_stop_stays_latched (test_full_pilot.FullPilotTests.test_no_limit_historical_permission_stop_stays_latched) ... ok
+test_no_limit_keeps_all_safety_stops_and_retry (test_full_pilot.FullPilotTests.test_no_limit_keeps_all_safety_stops_and_retry) ... ok
+test_no_limit_never_truncates_incomplete_history (test_full_pilot.FullPilotTests.test_no_limit_never_truncates_incomplete_history) ... ok
+test_no_limit_new_run_and_conflicting_flags (test_full_pilot.FullPilotTests.test_no_limit_new_run_and_conflicting_flags) ... ok
+test_no_limit_new_safety_stops_stay_latched_on_resume (test_full_pilot.FullPilotTests.test_no_limit_new_safety_stops_stay_latched_on_resume) ... ok
+test_no_limit_preserves_config_journal_prefix_and_usage (test_full_pilot.FullPilotTests.test_no_limit_preserves_config_journal_prefix_and_usage) ... ERROR
+test_no_limit_rejects_other_configuration_changes (test_full_pilot.FullPilotTests.test_no_limit_rejects_other_configuration_changes) ... ok
+test_pilot_flag_cannot_bypass_formal_or_dev (test_full_pilot.FullPilotTests.test_pilot_flag_cannot_bypass_formal_or_dev) ... ok
+test_pilot_requires_authorization_snapshot_and_stops (test_full_pilot.FullPilotTests.test_pilot_requires_authorization_snapshot_and_stops) ... ok
+test_snapshot_builder_whitelist_and_independent_messages (test_full_pilot.FullPilotTests.test_snapshot_builder_whitelist_and_independent_messages) ... ok
+test_builder_boundary_and_invalid_response_mapping (test_integration.IntegrationTests.test_builder_boundary_and_invalid_response_mapping) ... ok
+test_csv_bom_multiline_and_rejections (test_integration.IntegrationTests.test_csv_bom_multiline_and_rejections) ... ok
+test_manifest_tampering_fails_before_requests (test_integration.IntegrationTests.test_manifest_tampering_fails_before_requests) ... ok
+test_official_six_requests_resume_and_evaluate (test_integration.IntegrationTests.test_official_six_requests_resume_and_evaluate) ... ok
+test_partial_pairs_rejected (test_integration.IntegrationTests.test_partial_pairs_rejected) ... ok
+test_request_failure_mapping (test_integration.IntegrationTests.test_request_failure_mapping) ... ok
+test_wang_manual_contract (test_integration.IntegrationTests.test_wang_manual_contract) ... ok
+test_403_bad_error_body_falls_back_safely (test_model_client.ModelClientTests.test_403_bad_error_body_falls_back_safely) ... ok
+test_403_error_body_read_failure (test_model_client.ModelClientTests.test_403_error_body_read_failure) ... ok
+test_403_json_error_fields (test_model_client.ModelClientTests.test_403_json_error_fields) ... ok
+test_403_sensitive_fields_redacted (test_model_client.ModelClientTests.test_403_sensitive_fields_redacted) ... ok
+test_default_mock_never_constructs_transport (test_model_client.ModelClientTests.test_default_mock_never_constructs_transport) ... ok
+test_empty_prompts_rejected (test_model_client.ModelClientTests.test_empty_prompts_rejected) ... ok
+test_http_error_classification (test_model_client.ModelClientTests.test_http_error_classification) ... ok
+test_invalid_config_rejected (test_model_client.ModelClientTests.test_invalid_config_rejected) ... ok
+test_invalid_label_preserves_raw_response (test_model_client.ModelClientTests.test_invalid_label_preserves_raw_response) ... ok
+test_invalid_messages_rejected_before_transport (test_model_client.ModelClientTests.test_invalid_messages_rejected_before_transport) ... ok
+test_invalid_output_status (test_model_client.ModelClientTests.test_invalid_output_status) ... ok
+test_latency_in_milliseconds (test_model_client.ModelClientTests.test_latency_in_milliseconds) ... ok
+test_malformed_and_truncated_responses (test_model_client.ModelClientTests.test_malformed_and_truncated_responses) ... ok
+test_messages_preserved_without_mutation (test_model_client.ModelClientTests.test_messages_preserved_without_mutation) ... ok
+test_missing_and_invalid_token_counts (test_model_client.ModelClientTests.test_missing_and_invalid_token_counts) ... ok
+test_mock_labels_and_invalid_output (test_model_client.ModelClientTests.test_mock_labels_and_invalid_output) ... ok
+test_mock_response_fields (test_model_client.ModelClientTests.test_mock_response_fields) ... ok
+test_non_json_response (test_model_client.ModelClientTests.test_non_json_response) ... ok
+test_qwen_request_contract (test_model_client.ModelClientTests.test_qwen_request_contract) ... ok
+test_qwen_requires_explicit_opt_in_and_credentials (test_model_client.ModelClientTests.test_qwen_requires_explicit_opt_in_and_credentials) ... ok
+test_redirects_are_disabled (test_model_client.ModelClientTests.test_redirects_are_disabled) ... ok
+test_sample_configs_are_safe (test_model_client.ModelClientTests.test_sample_configs_are_safe) ... ok
+test_secrets_only_from_environment_and_hidden_in_repr (test_model_client.ModelClientTests.test_secrets_only_from_environment_and_hidden_in_repr) ... ok
+test_standard_content_parts_and_tool_messages (test_model_client.ModelClientTests.test_standard_content_parts_and_tool_messages) ... ok
+test_timeout_and_network_classification_with_latency (test_model_client.ModelClientTests.test_timeout_and_network_classification_with_latency) ... ok
+test_transport_errors_are_sanitized_and_not_retried (test_model_client.ModelClientTests.test_transport_errors_are_sanitized_and_not_retried) ... ok
+test_truncated_response_preserves_text_and_usage (test_model_client.ModelClientTests.test_truncated_response_preserves_text_and_usage) ... ok
+test_usage_and_returned_model_id (test_model_client.ModelClientTests.test_usage_and_returned_model_id) ... ok
+test_600_fresh_dispatches_exact_messages_and_resume_zero (test_pilot_round2.Round2Tests.test_600_fresh_dispatches_exact_messages_and_resume_zero) ... ok
+test_check_read_only_no_credentials_or_gold_access (test_pilot_round2.Round2Tests.test_check_read_only_no_credentials_or_gold_access) ... ok
+test_foreign_round1_journal_and_tampered_messages_rejected (test_pilot_round2.Round2Tests.test_foreign_round1_journal_and_tampered_messages_rejected) ... ok
+test_network_retry_is_extra_attempt_not_extra_logical_job (test_pilot_round2.Round2Tests.test_network_retry_is_extra_attempt_not_extra_logical_job) ... ok
+test_run_requires_manual_flags_before_client_creation (test_pilot_round2.Round2Tests.test_run_requires_manual_flags_before_client_creation) ... ok
+test_only_newlines_accepted_all_assets_and_trust_anchors_enforced (test_prompt_v03_comparison.AdapterTests.test_only_newlines_accepted_all_assets_and_trust_anchors_enforced) ... ok
+test_original_windows_checkout_and_native_default_loader (test_prompt_v03_comparison.AdapterTests.test_original_windows_checkout_and_native_default_loader) ... ok
+test_reject_metadata_and_demonstration_reuse (test_prompt_v03_comparison.AdapterTests.test_reject_metadata_and_demonstration_reuse) ... ok
+test_440_successes_resume_only_remaining_70_without_limit (test_prompt_v03_comparison.PreparedTests.test_440_successes_resume_only_remaining_70_without_limit) ... ok
+test_all_1020_mock_messages_and_resume_zero (test_prompt_v03_comparison.PreparedTests.test_all_1020_mock_messages_and_resume_zero) ... ok
+test_check_only_no_credentials_and_historical_overlap (test_prompt_v03_comparison.PreparedTests.test_check_only_no_credentials_and_historical_overlap) ... ok
+test_frozen_message_tamper_and_foreign_journal_rejected (test_prompt_v03_comparison.PreparedTests.test_frozen_message_tamper_and_foreign_journal_rejected) ... ok
+test_no_limit_both_versions_and_conflicts_before_credentials (test_prompt_v03_comparison.PreparedTests.test_no_limit_both_versions_and_conflicts_before_credentials) ... ok
+test_real_entrypoint_offline_budget_resume_extension_and_latched_auth_stop (test_prompt_v03_comparison.PreparedTests.test_real_entrypoint_offline_budget_resume_extension_and_latched_auth_stop) ... ok
+test_real_flag_required_before_credentials (test_prompt_v03_comparison.PreparedTests.test_real_flag_required_before_credentials) ... ok
+test_runner_update_requires_scoped_receipt_and_preserves_asset_seals (test_prompt_v03_comparison.PreparedTests.test_runner_update_requires_scoped_receipt_and_preserves_asset_seals) ... ok
+test_authorization_or_boundary_changes_rejected (test_resume_full_pilot.RecoveryTests.test_authorization_or_boundary_changes_rejected) ... ok
+test_authorized_568_only_preserves_all_history_and_one_failed_few_shot (test_resume_full_pilot.RecoveryTests.test_authorized_568_only_preserves_all_history_and_one_failed_few_shot) ... ok
+test_budget_change_or_config_change_rejected (test_resume_full_pilot.RecoveryTests.test_budget_change_or_config_change_rejected) ... ok
+test_check_only_has_no_client_credentials_or_writes (test_resume_full_pilot.RecoveryTests.test_check_only_has_no_client_credentials_or_writes) ... ok
+test_cumulative_budget_includes_history_and_cannot_resume (test_resume_full_pilot.RecoveryTests.test_cumulative_budget_includes_history_and_cannot_resume) ... ok
+test_duplicate_finals_rejected (test_resume_full_pilot.RecoveryTests.test_duplicate_finals_rejected) ... ok
+test_historical_guards_even_after_reviewed_failure_stop (test_resume_full_pilot.RecoveryTests.test_historical_guards_even_after_reviewed_failure_stop) ... ok
+test_new_abnormal_usage_stops_immediately (test_resume_full_pilot.RecoveryTests.test_new_abnormal_usage_stops_immediately) ... ok
+test_new_missing_usage_stops_immediately (test_resume_full_pilot.RecoveryTests.test_new_missing_usage_stops_immediately) ... ok
+test_new_permission_error_stops_immediately (test_resume_full_pilot.RecoveryTests.test_new_permission_error_stops_immediately) ... ok
+test_new_three_network_failures_stop_and_cannot_reset_on_rerun (test_resume_full_pilot.RecoveryTests.test_new_three_network_failures_stop_and_cannot_reset_on_rerun) ... ok
+test_original_entry_stays_latched (test_resume_full_pilot.RecoveryTests.test_original_entry_stays_latched) ... ok
+test_post_boundary_failures_accumulate_and_success_resets (test_resume_full_pilot.RecoveryTests.test_post_boundary_failures_accumulate_and_success_resets) ... ok
+test_recovery_event_tampering_or_torn_tail_blocks_check (test_resume_full_pilot.RecoveryTests.test_recovery_event_tampering_or_torn_tail_blocks_check) ... ok
+test_snapshot_change_rejected_under_lock (test_resume_full_pilot.RecoveryTests.test_snapshot_change_rejected_under_lock) ... ok
+test_tampered_journal_prefixes_rejected_without_modification (test_resume_full_pilot.RecoveryTests.test_tampered_journal_prefixes_rejected_without_modification) ... ok
+test_torn_tail_never_truncated (test_resume_full_pilot.RecoveryTests.test_torn_tail_never_truncated) ... ok
+test_unauthorized_cli_never_constructs_client (test_resume_full_pilot.RecoveryTests.test_unauthorized_cli_never_constructs_client) ... ok
+test_unauthorized_function_never_calls_api_or_writes (test_resume_full_pilot.RecoveryTests.test_unauthorized_function_never_calls_api_or_writes) ... ok
+test_cli_requires_real_opt_in_before_any_request (test_run_experiment.RunnerTests.test_cli_requires_real_opt_in_before_any_request) ... ok
+test_concurrent_lock (test_run_experiment.RunnerTests.test_concurrent_lock) ... ok
+test_config_and_dataset_mismatch (test_run_experiment.RunnerTests.test_config_and_dataset_mismatch) ... ok
+test_csv_rejected_with_mapping_guidance (test_run_experiment.RunnerTests.test_csv_rejected_with_mapping_guidance) ... ok
+test_duplicate_completion_rejected (test_run_experiment.RunnerTests.test_duplicate_completion_rejected) ... ok
+test_duplicate_predictions_rejected (test_run_experiment.RunnerTests.test_duplicate_predictions_rejected) ... ok
+test_foreign_journal_identity_rejected (test_run_experiment.RunnerTests.test_foreign_journal_identity_rejected) ... ok
+test_independent_messages (test_run_experiment.RunnerTests.test_independent_messages) ... ok
+test_input_validation (test_run_experiment.RunnerTests.test_input_validation) ... ok
+test_interior_corruption_rejected (test_run_experiment.RunnerTests.test_interior_corruption_rejected) ... ok
+test_interrupted_request_unknown_not_replayed (test_run_experiment.RunnerTests.test_interrupted_request_unknown_not_replayed) ... ok
+test_invalid_label_no_retry (test_run_experiment.RunnerTests.test_invalid_label_no_retry) ... ok
+test_log_schema (test_run_experiment.RunnerTests.test_log_schema) ... ok
+test_logical_ids_stable_across_runs (test_run_experiment.RunnerTests.test_logical_ids_stable_across_runs) ... ok
+test_nonretryable (test_run_experiment.RunnerTests.test_nonretryable) ... ok
+test_output_separation (test_run_experiment.RunnerTests.test_output_separation) ... ok
+test_partial_tail_repair (test_run_experiment.RunnerTests.test_partial_tail_repair) ... ok
+test_quoted_headers_and_connection_credentials_redacted (test_run_experiment.RunnerTests.test_quoted_headers_and_connection_credentials_redacted) ... ok
+test_raised_client_error (test_run_experiment.RunnerTests.test_raised_client_error) ... ok
+test_real_client_rejects_default_prompt_version (test_run_experiment.RunnerTests.test_real_client_rejects_default_prompt_version) ... ok
+test_real_client_requires_external_builder (test_run_experiment.RunnerTests.test_real_client_requires_external_builder) ... ok
+test_resume_completed_without_prediction (test_run_experiment.RunnerTests.test_resume_completed_without_prediction) ... ok
+test_resume_retryable_completion_respects_remaining_budget (test_run_experiment.RunnerTests.test_resume_retryable_completion_respects_remaining_budget) ... ok
+test_retry_limit_and_failed_final_is_skipped (test_run_experiment.RunnerTests.test_retry_limit_and_failed_final_is_skipped) ... ok
+test_retry_then_success (test_run_experiment.RunnerTests.test_retry_then_success) ... ok
+test_sensitive_data_redacted_everywhere (test_run_experiment.RunnerTests.test_sensitive_data_redacted_everywhere) ... ok
+test_six_calls_three_strategies_and_repeat (test_run_experiment.RunnerTests.test_six_calls_three_strategies_and_repeat) ... ok
+
+======================================================================
+ERROR: test_no_limit_preserves_config_journal_prefix_and_usage (test_full_pilot.FullPilotTests.test_no_limit_preserves_config_journal_prefix_and_usage)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Group13-Robot-Ambiguity-Detection\tests\test_full_pilot.py", line 129, in test_no_limit_preserves_config_journal_prefix_and_usage
+    self.assertEqual(event['authorization_flag'],'no_token_limit=True')
+                     ~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'authorization_flag'
+
+----------------------------------------------------------------------
+Ran 120 tests in 69.770s
+
+FAILED (errors=1)
+
+PARSER TESTS
+------------------------------------------------------------
+PASS: Exact CLEAR -> CLEAR (expected: CLEAR)
+PASS: Exact NEEDS_CLARIFICATION -> NEEDS_CLARIFICATION (expected: NEEDS_CLARIFICATION)
+PASS: Leading/trailing spaces -> CLEAR (expected: CLEAR)
+PASS: Extra explanation -> INVALID (expected: INVALID)
+PASS: Empty answer -> INVALID (expected: INVALID)
+PASS: Missing response -> INVALID (expected: INVALID)
+PASS: API request failed -> REQUEST_FAILED (expected: REQUEST_FAILED)
+PASS: Lowercase label -> INVALID (expected: INVALID)
+------------------------------------------------------------
+All parser tests passed.
+{
+  "output_dir": "C:\\Users\\49414\\AppData\\Local\\Temp\\tmpf2vkfumq\\group13-dev-v01-v03-20261113T154402Z-7eac14a0\\candidate\\pilot\\group13-dev-v01-v03-20261113T154402Z-7eac14a0-candidate",
+  "logical_requests": 510,
+  "final_predictions": 1,
+  "calls_this_run": 1,
+  "valid_predictions": 1,
+  "unresolved_logical_ids": [],
+  "stopped_reason": "token_budget_reached",
+  "remaining_logical_requests": 509,
+  "known_token_usage": {
+    "prompt_tokens": 99,
+    "completion_tokens": 1,
+    "total_tokens": 100
+  },
+  "total_token_stop": 100,
+  "unknown_usage_attempts": 0
+}
+{
+  "output_dir": "C:\\Users\\49414\\AppData\\Local\\Temp\\tmpf2vkfumq\\group13-dev-v01-v03-20261113T154402Z-7eac14a0\\candidate\\pilot\\group13-dev-v01-v03-20261113T154402Z-7eac14a0-candidate",
+  "logical_requests": 510,
+  "final_predictions": 1,
+  "calls_this_run": 0,
+  "valid_predictions": 1,
+  "unresolved_logical_ids": [],
+  "stopped_reason": "token_budget_reached",
+  "remaining_logical_requests": 509,
+  "known_token_usage": {
+    "prompt_tokens": 99,
+    "completion_tokens": 1,
+    "total_tokens": 100
+  },
+  "total_token_stop": 100,
+  "unknown_usage_attempts": 0
+}
+{
+  "output_dir": "C:\\Users\\49414\\AppData\\Local\\Temp\\tmpf2vkfumq\\group13-dev-v01-v03-20261113T154402Z-7eac14a0\\candidate\\pilot\\group13-dev-v01-v03-20261113T154402Z-7eac14a0-candidate",
+  "logical_requests": 510,
+  "final_predictions": 510,
+  "calls_this_run": 509,
+  "valid_predictions": 510,
+  "unresolved_logical_ids": [],
+  "stopped_reason": null,
+  "remaining_logical_requests": 0,
+  "known_token_usage": {
+    "prompt_tokens": 50490,
+    "completion_tokens": 510,
+    "total_tokens": 51000
+  },
+  "total_token_stop": 60000,
+  "unknown_usage_attempts": 0
+}
+{
+  "output_dir": "C:\\Users\\49414\\AppData\\Local\\Temp\\tmpf2vkfumq\\group13-dev-v01-v03-20261113T154402Z-7eac14a0\\candidate\\pilot\\group13-dev-v01-v03-20261113T154402Z-7eac14a0-candidate",
+  "logical_requests": 510,
+  "final_predictions": 510,
+  "calls_this_run": 0,
+  "valid_predictions": 510,
+  "unresolved_logical_ids": [],
+  "stopped_reason": null,
+  "remaining_logical_requests": 0,
+  "known_token_usage": {
+    "prompt_tokens": 50490,
+    "completion_tokens": 510,
+    "total_tokens": 51000
+  },
+  "total_token_stop": 60000,
+  "unknown_usage_attempts": 0
+}
+{
+  "output_dir": "C:\\Users\\49414\\AppData\\Local\\Temp\\tmpf2vkfumq\\group13-dev-v01-v03-20261113T154402Z-7eac14a0\\baseline\\pilot\\group13-dev-v01-v03-20261113T154402Z-7eac14a0-baseline",
+  "logical_requests": 510,
+  "final_predictions": 1,
+  "calls_this_run": 1,
+  "valid_predictions": 0,
+  "unresolved_logical_ids": [
+    "77ad8d6d24426ffe878ec9efae4ffacc16962079c96cafb3bdeceed6b282bb8f"
+  ],
+  "stopped_reason": "authentication_or_permission_error",
+  "remaining_logical_requests": 509,
+  "known_token_usage": {
+    "prompt_tokens": 99,
+    "completion_tokens": 1,
+    "total_tokens": 100
+  },
+  "total_token_stop": 300000,
+  "unknown_usage_attempts": 0
+}
+{
+  "output_dir": "C:\\Users\\49414\\AppData\\Local\\Temp\\tmpf2vkfumq\\group13-dev-v01-v03-20261113T154402Z-7eac14a0\\baseline\\pilot\\group13-dev-v01-v03-20261113T154402Z-7eac14a0-baseline",
+  "logical_requests": 510,
+  "final_predictions": 1,
+  "calls_this_run": 0,
+  "valid_predictions": 0,
+  "unresolved_logical_ids": [
+    "77ad8d6d24426ffe878ec9efae4ffacc16962079c96cafb3bdeceed6b282bb8f"
+  ],
+  "stopped_reason": "authentication_or_permission_error",
+  "remaining_logical_requests": 509,
+  "known_token_usage": {
+    "prompt_tokens": 99,
+    "completion_tokens": 1,
+    "total_tokens": 100
+  },
+  "total_token_stop": 300000,
+  "unknown_usage_attempts": 0
+}
+{
+  "run_id": "group13-full-pilot-qwen200-20261111T090248Z-76877106",
+  "final_predictions": 32,
+  "valid_predictions": 31,
+  "remaining_logical_requests": 568,
+  "reviewed_completions": 45,
+  "known_total_tokens": 12934,
+  "total_token_stop": 300000,
+  "stopped_reason": null,
+  "execution_requires": "--resume-after-reviewed-stop",
+  "real_api_calls": 0
+}

@@ -1,0 +1,10 @@
+{
+  "offline_tests": 120,
+  "offline_tests_passed": true,
+  "historical_files_unchanged": 35,
+  "candidate_successes_to_skip": 440,
+  "candidate_remaining_logical_requests": 70,
+  "real_api_calls": 0,
+  "commit_performed": false,
+  "push_performed": false
+}

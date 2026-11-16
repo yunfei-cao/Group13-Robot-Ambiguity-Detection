@@ -1,0 +1,122 @@
+[
+  {
+    "path": "data\\processed\\dev_inputs.csv",
+    "expected_sha256": "329b725dbcdd05b0a191731cde31add5e5b8326ad50fa4506e5d89b2e4bcaa6d",
+    "actual_sha256": "65585f5273e89ee2d39455eaa0a3b5240232eb4cc5a8cf22f96c05366dea1b68",
+    "lf_normalized_sha256": "329b725dbcdd05b0a191731cde31add5e5b8326ad50fa4506e5d89b2e4bcaa6d",
+    "byte_match": false,
+    "lf_normalized_match": true
+  },
+  {
+    "path": "data\\processed\\dev_labels.csv",
+    "expected_sha256": "97d9e62476e9591ae55060411432a5c736919a31bff1942ab6772b432d663226",
+    "actual_sha256": "db45be9b3ae59b5c913bef54fd396ff2aaab50ca5ddde3f91ff6f37e034c892f",
+    "lf_normalized_sha256": "97d9e62476e9591ae55060411432a5c736919a31bff1942ab6772b432d663226",
+    "byte_match": false,
+    "lf_normalized_match": true
+  },
+  {
+    "path": "data\\processed\\test_inputs.csv",
+    "expected_sha256": "6c6e6b71a1a257fe6ffd4e7b74cc9764664ac0ff036a1ad0dc853bd93d780f05",
+    "actual_sha256": "a24c8c407b886658573d014b9658f5b2ae09a0c7d94241f567b6a383adf7f5ae",
+    "lf_normalized_sha256": "6c6e6b71a1a257fe6ffd4e7b74cc9764664ac0ff036a1ad0dc853bd93d780f05",
+    "byte_match": false,
+    "lf_normalized_match": true
+  },
+  {
+    "path": "data\\processed\\test_labels.csv",
+    "expected_sha256": "442042462448b793a4ced0b76c758885f5ea766f454397bda152297ea18e30ed",
+    "actual_sha256": "97b56a0934486e5e40c67bdb257d021fa887267b5b63c8ec34085824b6f87dd5",
+    "lf_normalized_sha256": "442042462448b793a4ced0b76c758885f5ea766f454397bda152297ea18e30ed",
+    "byte_match": false,
+    "lf_normalized_match": true
+  },
+  {
+    "path": "data\\processed\\excluded_pairs.csv",
+    "expected_sha256": "7c1237c91dab9898a6e3e3335382f919159e5e5c36fcda2ca1cca13c1ea6c3cc",
+    "actual_sha256": "fa2ede9aaab6a6dca08b28ccc571f0c78d48318ad1ab4d10558390adfaf79443",
+    "lf_normalized_sha256": "7c1237c91dab9898a6e3e3335382f919159e5e5c36fcda2ca1cca13c1ea6c3cc",
+    "byte_match": false,
+    "lf_normalized_match": true
+  },
+  {
+    "path": "data\\processed\\test_pair_ids.txt",
+    "expected_sha256": "b2db775163b6c1648693fc791fa3d41459252df9884d1160754bde4ac54fe155",
+    "actual_sha256": "a6cc6ca6d911b7d7a87f751e1b0630336035437e35a7eb6afaafeaab34182f58",
+    "lf_normalized_sha256": "b2db775163b6c1648693fc791fa3d41459252df9884d1160754bde4ac54fe155",
+    "byte_match": false,
+    "lf_normalized_match": true
+  },
+  {
+    "path": "data\\raw\\ambik_calib_100.csv",
+    "expected_sha256": "821fa034fa98d7ed1279bb2691da77db841924cb68cfb09ae179dda0b5d8b782",
+    "actual_sha256": "cded35bb1c36a457c4ccf298f2bd7ae922a2ba26b19f27dccb8f49ff0b08b4d4",
+    "lf_normalized_sha256": "821fa034fa98d7ed1279bb2691da77db841924cb68cfb09ae179dda0b5d8b782",
+    "byte_match": false,
+    "lf_normalized_match": true
+  },
+  {
+    "path": "data\\raw\\ambik_test_900.csv",
+    "expected_sha256": "3925fc4718893aa5fe8999c1d0518f3ebcd320fb1b646a1a6d854748f2d77b24",
+    "actual_sha256": "eabaeaa26397fc826a138228f1add819594426653cd5375fca09790ecc079d28",
+    "lf_normalized_sha256": "3925fc4718893aa5fe8999c1d0518f3ebcd320fb1b646a1a6d854748f2d77b24",
+    "byte_match": false,
+    "lf_normalized_match": true
+  },
+  {
+    "path": "prompts\\zero_shot.txt",
+    "expected_sha256": "80346d7c1878a1efc504733333096bb06fa4e34b56d3d44e51b08b197bcedff3",
+    "actual_sha256": "e63271127cf786f88f9404278404511bc238d67d869c0048af329d2e522ccbe8",
+    "lf_normalized_sha256": "80346d7c1878a1efc504733333096bb06fa4e34b56d3d44e51b08b197bcedff3",
+    "byte_match": false,
+    "lf_normalized_match": true
+  },
+  {
+    "path": "prompts\\few_shot.txt",
+    "expected_sha256": "1e3eb40be31720f3207afdc92e7c85843a28edf9be966f0039c06538aad48179",
+    "actual_sha256": "06f4be08db7b14f908337570d58269d1ab30f4bcf1948d7c8080fd02f3270dc0",
+    "lf_normalized_sha256": "1e3eb40be31720f3207afdc92e7c85843a28edf9be966f0039c06538aad48179",
+    "byte_match": false,
+    "lf_normalized_match": true
+  },
+  {
+    "path": "prompts\\checklist.txt",
+    "expected_sha256": "66ec4e21c7f1eb4b89da2c314136dcf58f784503c53d19febc3d44d0d18abdea",
+    "actual_sha256": "0cddb63aa2889f869df6b5bfc7140b2debfb5a530a146aa9a5668f066f5ce3ee",
+    "lf_normalized_sha256": "66ec4e21c7f1eb4b89da2c314136dcf58f784503c53d19febc3d44d0d18abdea",
+    "byte_match": false,
+    "lf_normalized_match": true
+  },
+  {
+    "path": "prompts\\few_shot_examples.json",
+    "expected_sha256": "515174a013117ceef4912608aa413be94d785f681ec049e9c30a8883d5afa40b",
+    "actual_sha256": "d3c9c35d475053789696e82fe96d0a30cc736747a4d6db78bd4de1a81f1e7390",
+    "lf_normalized_sha256": "515174a013117ceef4912608aa413be94d785f681ec049e9c30a8883d5afa40b",
+    "byte_match": false,
+    "lf_normalized_match": true
+  },
+  {
+    "path": "prompts\\preview_messages.json",
+    "expected_sha256": "cd4da914b16623e7d1f52f5f5e6f0161db97c4b41108f9e818a7765590b70dfc",
+    "actual_sha256": "f808bdfae4db54f6860de22eb8db538dda94bc722cd4f214486811f24d32ff8f",
+    "lf_normalized_sha256": "cd4da914b16623e7d1f52f5f5e6f0161db97c4b41108f9e818a7765590b70dfc",
+    "byte_match": false,
+    "lf_normalized_match": true
+  },
+  {
+    "path": "data\\processed\\dev_inputs.csv",
+    "expected_sha256": "329b725dbcdd05b0a191731cde31add5e5b8326ad50fa4506e5d89b2e4bcaa6d",
+    "actual_sha256": "65585f5273e89ee2d39455eaa0a3b5240232eb4cc5a8cf22f96c05366dea1b68",
+    "lf_normalized_sha256": "329b725dbcdd05b0a191731cde31add5e5b8326ad50fa4506e5d89b2e4bcaa6d",
+    "byte_match": false,
+    "lf_normalized_match": true
+  },
+  {
+    "path": "data\\processed\\dev_labels.csv",
+    "expected_sha256": "97d9e62476e9591ae55060411432a5c736919a31bff1942ab6772b432d663226",
+    "actual_sha256": "db45be9b3ae59b5c913bef54fd396ff2aaab50ca5ddde3f91ff6f37e034c892f",
+    "lf_normalized_sha256": "97d9e62476e9591ae55060411432a5c736919a31bff1942ab6772b432d663226",
+    "byte_match": false,
+    "lf_normalized_match": true
+  }
+]

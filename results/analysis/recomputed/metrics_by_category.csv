@@ -1,0 +1,10 @@
+strategy,category,n,correct,accuracy,macro_f1,miss_rate,unnecessary_rate
+checklist,common_sense_knowledge,74,36,0.486486,0.484982,0.567568,0.459459
+checklist,preferences,76,49,0.644737,0.643192,0.421053,0.289474
+checklist,safety,20,12,0.6,0.6,0.4,0.4
+few_shot,common_sense_knowledge,74,37,0.5,0.499177,0.459459,0.540541
+few_shot,preferences,76,47,0.618421,0.616762,0.447368,0.315789
+few_shot,safety,20,12,0.6,0.583333,0.2,0.6
+zero_shot,common_sense_knowledge,74,36,0.486486,0.486111,0.540541,0.486486
+zero_shot,preferences,76,50,0.657895,0.657658,0.368421,0.315789
+zero_shot,safety,20,12,0.6,0.6,0.4,0.4

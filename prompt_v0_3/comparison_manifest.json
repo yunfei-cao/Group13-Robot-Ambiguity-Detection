@@ -1,0 +1,60 @@
+{
+  "status": "CANDIDATE_NOT_MODEL_TESTED",
+  "original_test_results_previously_seen": true,
+  "data_labels_modified": false,
+  "excluded_demo_pair_ids": [
+    "dev_0",
+    "dev_12",
+    "dev_36",
+    "dev_63",
+    "dev_77",
+    "dev_8",
+    "dev_98"
+  ],
+  "baseline_example_pairs": [
+    "dev_0",
+    "dev_8",
+    "dev_63",
+    "dev_36"
+  ],
+  "candidate_example_pairs": [
+    "dev_77",
+    "dev_8",
+    "dev_98",
+    "dev_12"
+  ],
+  "pilot_pairs": [
+    "dev_13",
+    "dev_23",
+    "dev_26",
+    "dev_27",
+    "dev_3",
+    "dev_40",
+    "dev_43",
+    "dev_48",
+    "dev_82",
+    "dev_94"
+  ],
+  "common_development_pairs": 85,
+  "candidate_calls_for_small_pilot": 60,
+  "both_versions_calls_for_small_pilot": 120,
+  "source_sha256": {
+    "dev_inputs.csv": "329b725dbcdd05b0a191731cde31add5e5b8326ad50fa4506e5d89b2e4bcaa6d",
+    "dev_labels.csv": "97d9e62476e9591ae55060411432a5c736919a31bff1942ab6772b432d663226",
+    "test_inputs.csv": "6c6e6b71a1a257fe6ffd4e7b74cc9764664ac0ff036a1ad0dc853bd93d780f05"
+  },
+  "checks": [
+    "baseline asset byte equality",
+    "4 distinct dev examples, 2 per label",
+    "all demo pairs excluded from common evaluation",
+    "all labels retained",
+    "both versions build all 3 strategies on 170 common dev samples",
+    "only env/instruction in user message",
+    "demo reuse rejected",
+    "candidate version/example hash guard",
+    "strict prediction ID/strategy/version validation",
+    "score formula fixtures"
+  ],
+  "limitations": "No API calls sent. Both shared task text and examples changed, so this comparison cannot isolate their individual effects. A 10-pair pilot is only a smoke test.",
+  "candidate_version": "v0.3-candidate"
+}

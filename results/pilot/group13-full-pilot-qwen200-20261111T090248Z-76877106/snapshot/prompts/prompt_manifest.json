@@ -1,0 +1,39 @@
+{
+  "prompt_version": "v0.1-dev",
+  "status": "DRAFT: development pilot pending",
+  "strategies": [
+    "zero_shot",
+    "few_shot",
+    "checklist"
+  ],
+  "example_ids_in_order": [
+    "s_656a0b46bab6b8cfd282",
+    "s_d17d0ae39b74d48edeaa",
+    "s_6092d6ba91d198fb32f0",
+    "s_3cddb181dd0a9be3f5f9"
+  ],
+  "example_pair_ids_in_order": [
+    "dev_0",
+    "dev_8",
+    "dev_63",
+    "dev_36"
+  ],
+  "example_labels_in_order": [
+    "CLEAR",
+    "NEEDS_CLARIFICATION",
+    "CLEAR",
+    "NEEDS_CLARIFICATION"
+  ],
+  "development_source_sha256": {
+    "dev_inputs.csv": "329b725dbcdd05b0a191731cde31add5e5b8326ad50fa4506e5d89b2e4bcaa6d",
+    "dev_labels.csv": "97d9e62476e9591ae55060411432a5c736919a31bff1942ab6772b432d663226"
+  },
+  "files_sha256": {
+    "zero_shot.txt": "80346d7c1878a1efc504733333096bb06fa4e34b56d3d44e51b08b197bcedff3",
+    "few_shot.txt": "1e3eb40be31720f3207afdc92e7c85843a28edf9be966f0039c06538aad48179",
+    "checklist.txt": "66ec4e21c7f1eb4b89da2c314136dcf58f784503c53d19febc3d44d0d18abdea",
+    "few_shot_examples.json": "515174a013117ceef4912608aa413be94d785f681ec049e9c30a8883d5afa40b",
+    "preview_messages.json": "cd4da914b16623e7d1f52f5f5e6f0161db97c4b41108f9e818a7765590b70dfc"
+  },
+  "notes": "Examples cover object/ingredient selection in preferences and common-sense categories; they do not cover all categories. Original development labels retained. No model-performance validation or final prompt freeze has been performed."
+}

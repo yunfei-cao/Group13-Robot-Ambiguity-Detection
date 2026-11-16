@@ -1,0 +1,42 @@
+{
+  "prompt_version": "v0.3-candidate",
+  "code_version": "1.3.0",
+  "status": "UNFROZEN: this export does not certify pilot completion or team approval",
+  "strategies": [
+    "zero_shot",
+    "few_shot",
+    "checklist"
+  ],
+  "example_ids_in_order": [
+    "s_d912bded8ad12fe2e074",
+    "s_d17d0ae39b74d48edeaa",
+    "s_5164512d4c2bb2030588",
+    "s_056265b9bd186c26edf0"
+  ],
+  "example_pair_ids_in_order": [
+    "dev_77",
+    "dev_8",
+    "dev_98",
+    "dev_12"
+  ],
+  "example_labels_in_order": [
+    "CLEAR",
+    "NEEDS_CLARIFICATION",
+    "CLEAR",
+    "NEEDS_CLARIFICATION"
+  ],
+  "development_source_sha256": {
+    "dev_inputs.csv": "329b725dbcdd05b0a191731cde31add5e5b8326ad50fa4506e5d89b2e4bcaa6d",
+    "dev_labels.csv": "97d9e62476e9591ae55060411432a5c736919a31bff1942ab6772b432d663226"
+  },
+  "test_inputs_sha256": "6c6e6b71a1a257fe6ffd4e7b74cc9764664ac0ff036a1ad0dc853bd93d780f05",
+  "provenance_check": "Examples joined to development records; dev/test ID and instruction overlap checked.",
+  "files_sha256": {
+    "zero_shot.txt": "711c8e0ef2b4064d0b16a6cf84d906c83f5f363cde18c77f8c370d47d9aaa1f2",
+    "few_shot.txt": "a77fddaa2e7a8750bb29ab5c0aaccd76e5df8b12dce649bb353d6f9a642678f8",
+    "checklist.txt": "450f5852e1233d1d9cfc304be7bfa5a0df27da2f72065e6d6e7f859e37bbc468",
+    "few_shot_examples.json": "e57a9b5ea42a147f8f10005abc8439c25c6de2185d578dd8a5cbd5f85c555f8d",
+    "preview_messages.json": "7ff3a3f24a71f0e4da8ca9b8ebf99b23778ba288f2204dc5319fde7b34cdc6c0"
+  },
+  "notes": "Post-hoc development candidate: original test aggregates and some cases were already seen. Examples were selected from development records, not test predictions; original labels retained. Two CLEAR examples illustrate routine planning; NEEDS examples illustrate ingredient and destination choices. No model evaluation has been run for this candidate; no improvement is established."
+}

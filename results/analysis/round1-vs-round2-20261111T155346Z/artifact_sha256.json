@@ -1,0 +1,16 @@
+{
+  "accuracy_macro_f1.svg": "6da65369e349f0d9a8a3f75fdc81024fb82942ee6c68eaf05d23b324f5644b0d",
+  "agreement_by_strategy.csv": "6ad126d4b3c8116896eaf46f6a9e27aa5105e083f1d6e77bff0004d6cc8291f2",
+  "aligned_predictions.csv": "f0bcf4cac6a553cc55d0a7b4d8cd2081d6873c41e36c0a843fb1adeae33a9b5a",
+  "analyze_offline.py": "81a828918608160cd4e36430b3a34353b82a176af9f982ce60d51777627a1400",
+  "category_accuracy.csv": "445da48ca4565ff7b1d3ec685a2be2b2a239e71131e2bc9ab3557c95e62b9344",
+  "comparison.md": "1abcd224381496a9ca3c90bc7dca113953a3b1c0b8b5d110ec96a9688529f3c9",
+  "confusion_matrices.json": "e3c95bf4c148fb4972b5b41e88c5e8f72219c52a54d80ec36687c3b7f5aceb52",
+  "disagreements.csv": "8c0973f312b41ac4337bc2e403bed939b32267b1289293899334b98548354ad4",
+  "integrity.json": "773a21dfac4a0d84fcc611aa2111fa8d9d8c66ca24a5900b394923d801999169",
+  "metrics_by_round_strategy.csv": "aa4649783de87016484757f268329082c33591955b159468d8a2ea166613b84a",
+  "prediction_distribution.csv": "28a798010c3dc61ddc7043298b2f84b9360f09ccc08d6fecbf4fb8c65d385c15",
+  "round2_minus_round1.csv": "4a7fe3b106b7627644efcf76b0a7019116287c79fa204147796de27cf83a95fc",
+  "scored_predictions.csv": "72f6a6b20bf66dc523b66f0ae6c4a8a9504edf1cd6348c634a12648b3213dcae",
+  "tokens_and_failures.csv": "4aab161399a5ea0fc8952a03f9e1c1944f742b52d50b1ae55336a75763d748aa"
+}
